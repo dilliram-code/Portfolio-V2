@@ -1,58 +1,48 @@
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-/////////////////////////////////////////////////////////////////////////////////
-/* CSS VARIABLES */
-
-/* Blue - hsl(217, 85%, 74%); */
-/* Purple - hsl(245, 54%, 74%); */
-/* Teal - hsl(181, 47%, 49%): */
-/* Yello - hsl(65, 60%, 70%); */
-/* Green - hsl(162, 60%, 65%); */
-/* Red - hsl(356, 67%, 70%); */
-/* Pink - hsl(330, 73%, 72%);  */
+/*========================= CSS VARIABLES =========================*/
 
 :root {
   --hue: 217;
   --sat: 85%;
   --light: 74%;
 
-  --primary-color: hsl(var(--hue) var(--sat) var(--light)); /* primary */
-  --white-color: hsl(var(--hue) 45% 98%); /* white */
-  --dark-color: hsl(var(--hue) 26% 12%); /* dark */
+  --primary-color: hsl(var(--hue), var(--sat), var(--light));
+  --white-color: hsl(var(--hue), 45%, 98%);
+  --dark-color: hsl(var(--hue), 26%, 12%);
 
-  /* ======== changeable colors for dark/light themes =======*/
-  --color-01: hsl(var(--hue) var(--sat) var(--light)); /* primary to dark */
-  --color-02: hsl(var(--hue) 45% 98%); /* white to dark */
-  --color-03: hsl(var(--hue) 26% 12%); /*  dark to white */
-  --color-04: hsl(var(--hue) 0% 62%); /* light-gray to dark-gray */
-  --color-05: hsl(var(--hue) 26% 12%); /* dark to primary */
+  /* Dark/Light Themes */
+  --color-01: hsl(var(--hue), var(--sat), var(--light));
+  --color-02: hsl(var(--hue), 45%, 98%);
+  --color-03: hsl(var(--hue), 26%, 12%);
+  --color-04: hsl(var(--hue), 0%, 62%);
+  --color-05: hsl(var(--hue), 26%, 12%);
 
-  --body-color: hsl(250 26% 12%); /* dark to white */
-  --hover-color: hsl(var(--hue) var(--sat) calc(var(--light) - 7%)); /* */
+  --body-color: hsl(250, 26%, 12%);
+  --hover-color: hsl(var(--hue), var(--sat), calc(var(--light) - 7%));
 
-  /* ========== Background colors =========*/
-  --bottom-nav-bg: hsl(var(--hue) 32% 25% / 0.65);
+  /* Background Colors */
+  --bottom-nav-bg: hsl(var(--hue), 32%, 25%, 0.65);
   --card-bg: linear-gradient(
     120deg,
-    hsl(var(--hue) 54% 74% / 0.15),
-    hsl(var(--hue) 54% 74% / 0.05)
+    hsl(var(--hue), 54%, 74%, 0.15),
+    hsl(var(--hue), 54%, 74%, 0.05)
   );
-  --modal-backdrop-bg: hsl (var(--hue) 54% 74% / 0.1);
+  --modal-backdrop-bg: hsl(var(--hue), 54%, 74%, 0.1);
   --footer-bg: linear-gradient(
     360deg,
-    hsl(var(--hue) 54% 74% / 0.15),
-    hsl(var(--hue) 54% 74%/0.1)
+    hsl(var(--hue), 54%, 74%, 0.15),
+    hsl(var(--hue), 54%, 74%, 0.1)
   );
-  --scrollbar-color: hs1(var(--hue) 25% 20%);
-  --scrollbar-thumb: hsl (var(--hue) var(--sat) var(--light));
-  --scrollbar-thumb-hover: hsl (var(--hue) var(--sat) calc(var(--light) - 7%));
-  ////////////////////////////////////////////////////////////////////////////////
+  --scrollbar-color: hsl(var(--hue), 25%, 20%);
+  --scrollbar-thumb: hsl(var(--hue), var(--sat), var(--light));
+  --scrollbar-thumb-hover: hsl(var(--hue), var(--sat), calc(var(--light) - 7%));
 
-  /* ====================== Font and typography ======= */
+  /* Fonts */
   --body-font-family: "Inter", sans-serif;
 
-  /* ======= Font sizes ======= */
+  /* Font Sizes */
   --h1-font-size: 2.85rem;
   --h2-font-size: 2.25rem;
   --h3-font-size: 1.97rem;
@@ -63,16 +53,16 @@
   --medium-font-size: 1.18rem;
   --base-font-size: 1.1rem;
   --small-font-size: 1.07rem;
-  --tiny-font-size: 98rem;
+  --tiny-font-size: 0.98rem;
 
-  /* ======================== Font weights =============== */
+  /* Font Weights */
   --font-light: 300;
   --font-regular: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
   --font-bold: 700;
 
-  /* ======= Layering order(z-index) ====================== */
+  /* Z-Index Layers */
   --z-minus: -1;
   --z-base: 0;
   --z-low: 1;
@@ -83,4 +73,41 @@
   --z-overlay: 1110;
   --z-modal: 1990;
   --z-max: 9999;
+}
+
+/*========================= RESET =========================*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font-family);
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--color-04);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*========================= BASE STYLES =========================*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-04);
+  background: var(--body-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ====================== Reusable Styles ==================== */
+.sue-container {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
 }
