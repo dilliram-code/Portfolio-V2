@@ -449,13 +449,16 @@ body {
 
 .avatar-img {
   position: relative;
-  width: 425px;
-  height: 425px;
+  width: 380px;
+  height: 380px;
+  clip-path: ellipse(75% 50% at 50% 45%);
+  /* clip-path: ellipse(100% 50% at 50% 70%); */
+
 }
 
 .avatar-img img {
   position: absolute;
-  width: 80%;
+  width: 85%;
   /* width: 100%; */
 }
 
