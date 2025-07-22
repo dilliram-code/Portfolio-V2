@@ -141,7 +141,6 @@ body {
 .border-btn {
   border: 2px solid var(--color-01);
 }
-/////////////////////////////////////////////////////////////////
 
 .sue-header {
   z-index: var(--z-fixed);
@@ -215,3 +214,107 @@ body {
 .theme-btn .moon-icon {
   display: none;
 }
+
+/* ======================= Bottom navigation menu ===================== */
+.bottom-nav-container {
+  position: relative;
+}
+.bottom-nav {
+  z-index: var(--z-fixed);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+}
+.bottom-nav-inner {
+  position: relative;
+}
+
+.bottom-nav .menu {
+  background: var(--bottom-nav-bg);
+  backdrop-filter: blur (10px);
+  padding: 16px 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 25px;
+  border-bottom: 1px solid hsl (var(--hue) 45% 98% / 0.1);
+  border-left: 1px solid hsl (var(--hue) 45% 98% / 0.1);
+  border-radius: 50px;
+}
+
+.bottom-nav .menu li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bottom-nav .menu li a i {
+  color: var(--color-02);
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.bottom-nav .menu li:hover a i {
+  color: var(--white-color);
+  background: var(--hover-color);
+}
+
+.bottom-nav .menu .current i {
+  color: var(--dark-color);
+  background: var(--primary-color);
+}
+
+.bottom-nav .menu li a span {
+  z-index: var(--z-tooltip);
+  position: absolute;
+  color: var(--dark-color);
+  background: var(--primary-color);
+  font-size: var(--tiny-font-size);
+  font-weight: var(--font-medium);
+  padding: 3px 10px;
+  transform: translateY(-53px);
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.bottom-nav .menu li a span:before {
+  content: "";
+  /* z-index: var(--z-minus); */
+  position: absolute;
+  background: var(--primary-color);
+  width: 10px;
+  height: 10px;
+  left: 50%;
+  top: 90%;
+  transform: rotate(45deg) translateX(-50%);
+}
+
+/* ============================= CHATGPT GENERATED =================== */
+/* .bottom-nav .menu li a span {
+  position: relative;
+  z-index: var(--z-tooltip);
+  color: var(--dark-color);
+  background: var(--primary-color);
+  font-size: var(--tiny-font-size);
+  font-weight: var(--font-medium);
+  padding: 3px 10px;
+  transform: translateY(-53px);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.bottom-nav .menu li a span::before {
+  content: "";
+  position: absolute;
+  background: var(--primary-color);
+  width: 10px;
+  height: 10px;
+  left: 50%;
+  top: 80%;
+  transform: translateX(-50%) rotate(45deg);
+} */
