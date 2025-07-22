@@ -241,6 +241,7 @@ body {
   border-bottom: 1px solid hsl (var(--hue) 45% 98% / 0.1);
   border-left: 1px solid hsl (var(--hue) 45% 98% / 0.1);
   border-radius: 50px;
+  /* display: none; */
 }
 
 .bottom-nav .menu li a {
@@ -282,6 +283,9 @@ body {
   opacity: 0;
 }
 
+.bottom-nav .menu li:hover a span {
+  opacity: 1;
+}
 .bottom-nav .menu li a span:before {
   content: "";
   /* z-index: var(--z-minus); */
@@ -318,3 +322,88 @@ body {
   top: 80%;
   transform: translateX(-50%) rotate(45deg);
 } */
+
+.bottom-nav .menu-hide-btn {
+  z-index: var(--z-fixed);
+  position: absolute;
+  top: -5px;
+  right: 0;
+  color: var(--dark-color);
+  font-size: 1.52rem;
+  background: var(--primary-color);
+  padding: 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.bottom-nav .menu-hide-btn:hover {
+  color: var(--white-color);
+  background: var(--hover-color);
+}
+
+.menu-show-btn {
+  z-index: var(--z-fixed);
+  position: fixed;
+  background: var(--bottom-nav-bg);
+  backdrop-filter: blur (10px);
+  width: 85px;
+  height: 50px;
+  border-bottom: 1px solid hsl (var(--hue) 45% 98% / 0.1);
+  border-left: 1px solid hsl (var(--hue) 45% 98% / 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 5px;
+  translate: -50% 0;
+  left: 50%;
+  /* bottom: 50px; */
+  bottom: -75px;
+  opacity: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  animation: wiggle 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes wiggle {
+  0%,
+  5% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+.menu-show-btn .bar-01,
+.menu-show-btn .bar-02 {
+  background: var(--primary-color);
+  width: 40px;
+  height: 4px;
+  transition: 0.15s;
+}
+.menu-show-btn:hover .bar-01,
+menu-show-btn:hover .bar-02 {
+  background: var(--hover-color);
+}
