@@ -6,6 +6,10 @@ var resumeTabNav = function (resumeTabClick){
     resumeTabContent.style.display = "none";
     resumeTabContent.classList.remove("active");
 });
+    resumePortfolioTabBtns.forEach((resumePortfolioTabBtn) =>{
+    resumePortfolioTabBtn.classList.remove("active");
+});
+
     resumeTabContents [resumeTabClick].style.display = "flex";
     resumeTabContents [resumeTabClick].classList.add("active");
     resumePortfolioTabBtns [resumeTabClick].classList.add("active");
