@@ -731,7 +731,7 @@ body {
   margin-bottom: 25px;
   display: none;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .resume-tab-content.active {
@@ -899,4 +899,13 @@ body {
 .skill-info span {
   color: var(--color-04);
   font-size: var(--tiny-font-size);
+}
+
+/* =============================Services======================== */
+.service-container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 35px;
+  row-gap: 38px;
 }
