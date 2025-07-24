@@ -730,10 +730,13 @@ body {
   justify-content: center;
   margin-bottom: 25px;
   display: none;
+  opacity: 0;
+  transition: opacity .3s ease;
 }
 
 .resume-tab-content.active {
   display: flex;
+  opacity: 1;
 }
 .education .resume-line {
   background: var(--primary-color);

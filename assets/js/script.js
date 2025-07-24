@@ -11,7 +11,9 @@ var resumeTabNav = function (resumeTabClick){
 });
 
     resumeTabContents [resumeTabClick].style.display = "flex";
+    setTimeout(() => {
     resumeTabContents [resumeTabClick].classList.add("active");
+    }, 100);
     resumePortfolioTabBtns [resumeTabClick].classList.add("active");
 }
 resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
