@@ -53,3 +53,28 @@ setTimeout(() => {
     });
 
 });
+
+
+// Portfolio modals, tabs and cards //
+
+// Filter portfolio cards according to portfolio tabs.
+document.addEventListener("DOMContentLoaded", () => {
+    const portfolioTabs = document.querySelector(".portfolio-tabs");
+    const portfolioTabBtns = portfolioTabs.querySelectorAll(".tab-btn");
+    const cardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
+portfolioTabBtns.forEach((tabBtn) => {
+    tabBtn.addEventListener("click", () => {
+
+        const filter = tabBtn.getAttribute("data-filter");
+        cardsWithModals.forEach((cardWithModal) => {
+            if(filter === "all" || cardWithModal.classList.contains (filter)) {
+            cardWithModal.style.opacity = "1";
+                }
+            else{
+                cardWithModal.style.opacity = "0";
+                }
+            });
+
+        });
+    });
+});
