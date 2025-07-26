@@ -1225,3 +1225,41 @@ body {
   justify-content: center;
   overflow-y: auto;
 }
+
+.portfolio-modal {
+  position: relative;
+  background: var(--color-03);
+  max-width: 900px;
+  height: fit-content;
+  margin: 60px 25px;
+  padding:30px 45px;
+  border-radius: 15px;
+}
+
+.portfolio-modal .modal-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+/* self starts */
+.modal-img img {
+  max-width: 100%;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* optional */
+/* .portfolio-modal {
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+} */
+
+/* self ends */
