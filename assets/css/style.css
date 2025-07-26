@@ -1321,3 +1321,84 @@ body {
   width: 100%;
   margin-top: 12em;
 }
+
+.swiper {
+  width: 100%;
+  max-width: 1050px;
+  height: 275px;
+}
+
+.swiper-slide {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 45px;
+}
+
+.swiper-slide .client-details {
+  max-width: 500px;
+  text-align: left;
+}
+
+.swiper-slide .client-details h3 {
+  color: var(--color-02);
+  font-size: var(--xlarge-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: 5px;
+}
+
+.swiper-slide .client-details span {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-regular);
+}
+
+.swiper-slide .client-details p {
+  color: var(--color-02);
+  font-size: var(--base-font-size);
+  font-weight: var(--font-regular);
+  margin-top: 15px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  display: none;
+}
+.swiper-button-next i,
+.swiper-button-prev i {
+  color: var(--primary-color);
+  font-size: 4.5rem;
+  transition: 0.3s ease;
+}
+
+.swiper-button-next i:hover,
+.swiper-button-prev i:hover {
+  color: var(--hover-color);
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+  background: var(--primary-color);
+}
+
+.swiper-slide .client-img {
+  width: 200px;
+}
+.swiper-slide .client-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* self starts here */
+/* .testimonials .client-img img {
+  width: 100px; 
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; 
+  display: block;
+  margin: 0 auto; 
+} */
+
+/* self ends here */
