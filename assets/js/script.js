@@ -69,11 +69,28 @@ portfolioTabBtns.forEach((tabBtn) => {
         cardsWithModals.forEach((cardWithModal) => {
             if(filter === "all" || cardWithModal.classList.contains (filter)) {
             cardWithModal.style.opacity = "1";
+            cardWithModal.classList.remove("hidden");
+
+                setTimeout(() => {
+                                    cardWithModal.style.opacity = "1";
+                                    cardWithModal.style.transition = ".5s ease";
+                            }, 1);
+
                 }
             else{
-                cardWithModal.style.opacity = "0";
+                cardWithModal.classList.add("hidden");
+
+                setTimeout(() => {
+                                    cardWithModal.style.opacity = "0";
+                                    cardWithModal.style.transition = ".5s ease";
+                            }, 1);
+
                 }
             });
+            // Add active class to the clicked tab button.
+            portfolioTabBtns.forEach((tabBtn) => tabBtn.classList.remove("active"));
+            tabBtn.classList.add("active");
+
 
         });
     });
