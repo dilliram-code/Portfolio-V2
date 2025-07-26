@@ -1314,3 +1314,10 @@ body {
 } */
 
 /* self ends */
+
+/* Testimonials */
+.testimonials {
+  position: relative;
+  width: 100%;
+  margin-top: 12em;
+}
