@@ -84,12 +84,12 @@
 }
 
 ::selection {
-  background-color: pink;
+  background-color: #ff1493;
   color: white; /* optional: text color during selection */
 }
 
 ::-moz-selection {
-  background-color: pink;
+  background-color: #ff1493;
   color: white;
 }
 
