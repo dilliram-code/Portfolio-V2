@@ -53,3 +53,91 @@ setTimeout(() => {
     });
 
 });
+
+
+// Portfolio modals, tabs and cards //
+
+// Filter portfolio cards according to portfolio tabs.
+document.addEventListener("DOMContentLoaded", () => {
+    const portfolioTabs = document.querySelector(".portfolio-tabs");
+    const portfolioTabBtns = portfolioTabs.querySelectorAll(".tab-btn");
+    const cardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
+portfolioTabBtns.forEach((tabBtn) => {
+    tabBtn.addEventListener("click", () => {
+
+        const filter = tabBtn.getAttribute("data-filter");
+        cardsWithModals.forEach((cardWithModal) => {
+            if(filter === "all" || cardWithModal.classList.contains (filter)) {
+            cardWithModal.style.opacity = "1";
+            cardWithModal.classList.remove("hidden");
+
+                setTimeout(() => {
+                                    cardWithModal.style.opacity = "1";
+                                    cardWithModal.style.transition = ".5s ease";
+                            }, 1);
+
+                }
+            else{
+                cardWithModal.classList.add("hidden");
+
+                setTimeout(() => {
+                                    cardWithModal.style.opacity = "0";
+                                    cardWithModal.style.transition = ".5s ease";
+                            }, 1);
+
+                }
+            });
+            // Add active class to the clicked tab button.
+            portfolioTabBtns.forEach((tabBtn) => tabBtn.classList.remove("active"));
+            tabBtn.classList.add("active");
+
+
+        });
+    });
+});
+
+
+// Open/Close Portfolio modals.
+const portfolioCardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
+portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
+        const portfolioCard = portfolioCardWithModal.querySelector(".portfolio-card");
+        const portfolioBackdrop = portfolioCardWithModal.querySelector(".portfolio-modal-backdrop");
+        const portfolioModal = portfolioCardWithModal.querySelector(".portfolio-modal");
+        const modalCloseBtn = portfolioCardWithModal.querySelector(".modal-close-btn");
+
+        portfolioCard.addEventListener("click", () => {
+                portfolioBackdrop.style.display = "flex";
+
+                setTimeout(() => {
+                    portfolioBackdrop.classList.add("active");
+                                }, 200);
+                setTimeout(() => {
+                    portfolioModal.classList.add("active");
+                                }, 200);
+                });
+
+
+        modalCloseBtn.addEventListener("click", () => {
+                setTimeout(() => {portfolioBackdrop.style.display = "none";
+                            }, 500);
+                setTimeout(() => {portfolioBackdrop.classList.remove("active");
+                portfolioModal.classList.remove("active");
+                            }, 100);
+                    });
+
+            });
+
+// testimonials swipper
+var swiper = new Swiper(".sue-client-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
