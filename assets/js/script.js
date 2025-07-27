@@ -214,8 +214,10 @@ const menuShowBtn = document.querySelector(".menu-show-btn");
 var navTimeout;
 window.addEventListener("scroll", () => {
         bottomNav.classList.add("active");
-
+        menuShowBtn.classList.remove("active");
 if(window.scrollY < 10) {
+    menuHideBtn.classList.remove("active");
+
 function scrollStopped(){
 bottomNav.classList.add("active");
 }
@@ -225,8 +227,11 @@ navTimeout = setTimeout(scrollStopped, 1500);
 
 
         if(window.scrollY > 10){
+        menuHideBtn.classList.add("active");
+
         function scrollStopped(){
                 bottomNav.classList.remove("active");
+                menuShowBtn.classList.add("active");
                 }
         clearTimeout(navTimeout);
         navTimeout = setTimeout(scrollStopped, 1500);

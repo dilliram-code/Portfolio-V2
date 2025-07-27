@@ -434,6 +434,11 @@ body {
   opacity: 0;
 }
 
+.menu-hide-btn.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
 .bottom-nav .menu-hide-btn:hover {
   color: var(--white-color);
   background: var(--hover-color);
@@ -460,9 +465,18 @@ body {
   opacity: 0;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.5s ease, 0.3s ease;
+  transition-property: bottom, opacity;
   overflow: hidden;
   animation: wiggle 2s linear infinite;
   animation-delay: 1s;
+}
+
+.menu-show-btn.active {
+  bottom: 50px;
+  opacity: 1;
+  transition: 0.5s ease, 0.3s ease;
+  transition-property: bottom, opacity;
 }
 
 @keyframes wiggle {
