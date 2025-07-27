@@ -104,6 +104,20 @@ a {
   cursor: pointer;
 }
 
+/* ==============Page scroll bar============= */
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--scrollbar-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
 /*========================= BASE STYLES =========================*/
 html {
   scroll-behavior: smooth;
@@ -215,6 +229,12 @@ body {
   padding: 30px 0;
   transition: 0.3s ease;
 }
+
+.sue-header.shrink {
+  background: var(--body-color);
+  padding: 12px 0;
+}
+
 
 .sue-header .inner {
   width: 100%;

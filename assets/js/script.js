@@ -170,3 +170,10 @@ sueContactFormAlert.innerHTML = "<span>Message not sent!</span><i class='ri-erro
 sueContactFormAlert.title = error;
                         });
                     });
+
+
+// Shrink the height of the header on scroll
+window.addEventListener("scroll", () => {
+const sueHeader = document.querySelector(".sue-header");
+sueHeader.classList.toggle("shrink", window.scrollY > 0);
+});
