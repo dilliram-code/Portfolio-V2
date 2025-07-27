@@ -161,6 +161,9 @@ emailjs.sendForm('service_f7fz87m', 'template_965xjpo', '#sue-contact-form').the
         // console.log('SUCCESS!');
 sueContactFormAlert.innerHTML = "<span>Your message sent successfully!</span><i class='ri-checkbox-circle-fill'></i>";
 sueContactForm.reset();
+setTimeout(() => {
+            sueContactFormAlert.innerHTML = "";
+            }, 3000);
                         }, (error) => {
         // console.log('FAILED...', error);
 sueContactFormAlert.innerHTML = "<span>Message not sent!</span><i class='ri-error-warning-fill'></i>";
