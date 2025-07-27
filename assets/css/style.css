@@ -1590,3 +1590,52 @@ body {
   color: var(--primary-color);
   font-size: 1.25rem;
 }
+
+/* ==========================FOOTER====================== */
+.sue-footer {
+  background: var(--footer-bg);
+  padding-top: 100px;
+  padding-bottom: 165px;
+}
+
+.sue-footer .sue-container .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 22px;
+  row-gap: 22px;
+}
+
+.footer-menu .menu-item a {
+  color: var(--color-01);
+  font-size: calc(var(--tiny-font-size) 0.07rem);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.footer-menu .menu-item a:hover {
+  color: var(--color-03);
+  background: var(--color-01);
+}
+.sue-footer .copy-right {
+  color: var(--color-04);
+  font-size: var(--small-font-size);
+  margin-top: 10px;
+}
+
+.sue-footer .copy-right a:hover {
+  color: var(--color-01);
+  transition: 0.35;
+}

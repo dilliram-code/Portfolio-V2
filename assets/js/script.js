@@ -143,11 +143,11 @@ var swiper = new Swiper(".sue-client-swiper", {
     });
 
 
-    // Send the message from the email form
-    (function() {
+// Send the message from the email form
+(function() {
             // https://dashboard.emailjs.com/admin/account
             emailjs.init({
-              publicKey: "hFrNm3XDp2pxj6OtW",
+            publicKey: "hFrNm3XDp2pxj6OtW",
             });
         })();
     
