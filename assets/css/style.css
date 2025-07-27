@@ -235,7 +235,6 @@ body {
   padding: 12px 0;
 }
 
-
 .sue-header .inner {
   width: 100%;
   display: flex;
@@ -308,8 +307,20 @@ body {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 50px;
+  /* bottom: 50px; */
+  bottom: -75px;
+  opacity: 0;
+  transition: 0.5s ease, 0.3s ease;
+  transition-property: bottom, opacity;
 }
+
+.bottom-nav.active {
+  bottom: 50px;
+  opacity: 1;
+  transition: 0.5s ease, 0.3 ease;
+  transition-property: bottom, opacity;
+}
+
 .bottom-nav-inner {
   position: relative;
 }
