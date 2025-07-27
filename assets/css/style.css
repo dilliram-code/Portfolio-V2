@@ -83,6 +83,16 @@
   font-family: var(--body-font-family);
 }
 
+::selection {
+  background-color: pink;
+  color: white; /* optional: text color during selection */
+}
+
+::-moz-selection {
+  background-color: pink;
+  color: white;
+}
+
 ul,
 li {
   list-style: none;
