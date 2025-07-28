@@ -307,4 +307,5 @@ cursorHoverlinks.forEach((cursorHoverlink) => {
 const themeBtn = document.querySelector(".theme-btn");
 themeBtn.addEventListener("click", () => {
     themeBtn.classList.toggle("active-sun-icon");
+    document.body.classList.toggle("light-theme");
 });

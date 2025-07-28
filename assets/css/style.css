@@ -383,14 +383,36 @@ body {
   display: none;
 } */
 
-.theme-btn.active-sun-icon .sun-icon {
+/* ======================================= */
+/* .theme-btn.active-sun-icon .sun-icon,
+.theme-btn .moon-icon {
+  opacity: 1;
+  transition: 0.3s;
+} */
+
+/* .theme-btn.active-sun-icon .moon-icon,
+.theme-btn .sun-icon {
+  opacity: 0;
+  transition: 0.3s;
+} */
+
+/* =======================AI Generated================== */
+/* Default state (dark theme) - show moon, hide sun */
+.theme-btn .sun-icon {
+  opacity: 0;
+  transition: 0.3s;
+}
+.theme-btn .moon-icon {
   opacity: 1;
   transition: 0.3s;
 }
 
+/* When light theme is active - show sun, hide moon */
+.theme-btn.active-sun-icon .sun-icon {
+  opacity: 1;
+}
 .theme-btn.active-sun-icon .moon-icon {
   opacity: 0;
-  transition: 0.3s;
 }
 
 /* ======================= Bottom navigation menu ===================== */
