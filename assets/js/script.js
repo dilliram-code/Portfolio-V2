@@ -301,3 +301,10 @@ cursorHoverlinks.forEach((cursorHoverlink) => {
     cursorCircle.style.display = "block";
     });
 });
+
+
+// Change theme and save current theme on click the theme button.
+const themeBtn = document.querySelector(".theme-btn");
+themeBtn.addEventListener("click", () => {
+    themeBtn.classList.toggle("active-sun-icon");
+});

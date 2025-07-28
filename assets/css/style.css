@@ -379,8 +379,18 @@ body {
   transform: rotate(-15deg);
 }
 
-.theme-btn .moon-icon {
+/* .theme-btn .moon-icon {
   display: none;
+} */
+
+.theme-btn.active-sun-icon .sun-icon {
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.theme-btn.active-sun-icon .moon-icon {
+  opacity: 0;
+  transition: 0.3s;
 }
 
 /* ======================= Bottom navigation menu ===================== */
