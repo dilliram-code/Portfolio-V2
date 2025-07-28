@@ -237,3 +237,18 @@ navTimeout = setTimeout(scrollStopped, 1500);
         navTimeout = setTimeout(scrollStopped, 1500);
     }
 });
+
+
+// Hide bottom navigation menu on click menu-hide-btn.
+menuHideBtn.addEventListener("click", () => {
+    bottomNav.classList.toggle("active");
+    menuHideBtn.classList.toggle("active");
+    menuShowBtn.classList.toggle("active");
+});
+
+//Show bottom navigation menu on click menu-show-btn.
+menuShowBtn.addEventListener("click", () => {
+    bottomNav.classList.toggle("active");
+    menuHideBtn.classList.add("active");
+    menuShowBtn.classList.toggle("active");
+});

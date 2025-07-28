@@ -181,6 +181,47 @@ body {
   column-gap: 75px;
 }
 
+/* ===========To top button with scroll indicator bar ======= */
+.to-top-btn {
+  z-index: var(--z-fixed);
+  position: fixed;
+  background: hsl (var(--hue) 54% 74% / 0.2);
+  height: 100px;
+  width: 2px;
+  bottom: 25px;
+  right: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.to-top-btn a {
+  color: var(--color-01);
+  transition: 0.3s;
+}
+
+.to-top-btn a:hover {
+  color: var(--hover-color);
+}
+
+.to-top-btn a span {
+  position: absolute;
+  left: 0;
+  bottom: 155px;
+  transform: rotateZ(90deg);
+  transform-origin: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.to-top-btn .scroll-indicator-bar {
+  position: absolute;
+  background: var(--color-01);
+  width: 2px;
+  height: auto;
+  /* height: 50%; */
+  opacity: 0.5;
+}
 /* ======================= BUTTONS ============================ */
 .sue-main-btn {
   width: fit-content;
