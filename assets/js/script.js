@@ -252,3 +252,18 @@ menuShowBtn.addEventListener("click", () => {
     menuHideBtn.classList.add("active");
     menuShowBtn.classList.toggle("active");
 });
+
+// To-top-button with scroll indicator bar
+window.addEventListener("scroll", () => {
+    const toTopBtn = document.querySelector(".to-top-btn");
+    toTopBtn.classList.toggle("active", window.scrollY > 0);
+
+
+    // Scroll indicator bar
+const scrollIndicatorBar = document.querySelector(".scroll-indicator-bar");
+const pageScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrollValue = (pageScroll / height) * 100;
+scrollIndicatorBar.style.height = scrollValue + "%";
+
+});

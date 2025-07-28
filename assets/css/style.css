@@ -189,9 +189,13 @@ body {
   height: 100px;
   width: 2px;
   bottom: 25px;
-  right: 30px;
+  right: -30px;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.to-top-btn.active {
+  right: 30px;
 }
 
 .to-top-btn a {
@@ -217,9 +221,9 @@ body {
 .to-top-btn .scroll-indicator-bar {
   position: absolute;
   background: var(--color-01);
-  width: 2px;
-  height: auto;
-  /* height: 50%; */
+  width: 1px;
+  /* height: auto; */
+  height: 50%;
   opacity: 0.5;
 }
 /* ======================= BUTTONS ============================ */
