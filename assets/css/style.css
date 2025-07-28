@@ -181,6 +181,46 @@ body {
   column-gap: 75px;
 }
 
+/* ================Customized cursor============== */
+.cursor {
+  z-index: var(--z-max);
+  position: fixed;
+  /* top: 50%; */
+  /* left: 50%; */
+  pointer-events: none;
+}
+.cursor-dot {
+  position: absolute;
+  background: var(--primary-color);
+  /* background: red; */
+  width: 5px;
+  height: 5px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition-property: top, left, width, height;
+  transition-duration: 0.03s, 0.03s, 0.3s, 0.3s;
+}
+
+.cursor-dot.large {
+  background: hsl(var(--hue) var(--sat) var(--light) / 0.35);
+  width: 75px;
+  height: 75px;
+  transition-property: top, left, width, height;
+  transition-duration: 0.03s, 0.03s, 0.3s, 0.3s;
+}
+
+.cursor-circle {
+  position: absolute;
+  border: 2px solid var(--primary-color);
+  /* border: 2px solid red; */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 0.5;
+  transform: translate(-50%, -50%);
+  transition-property: top, left;
+  transition-duration: 0.09s, 0.09s;
+}
 /* ===========To top button with scroll indicator bar ======= */
 .to-top-btn {
   z-index: var(--z-fixed);
@@ -221,7 +261,7 @@ body {
 .to-top-btn .scroll-indicator-bar {
   position: absolute;
   background: var(--color-01);
-  width: 1px;
+  width: 2px;
   /* height: auto; */
   height: 50%;
   opacity: 0.5;

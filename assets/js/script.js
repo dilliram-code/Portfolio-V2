@@ -267,3 +267,37 @@ const scrollValue = (pageScroll / height) * 100;
 scrollIndicatorBar.style.height = scrollValue + "%";
 
 });
+
+
+// Customized cursor on mousemove
+const cursor = document.querySelector(".cursor");
+const cursorDot = cursor.querySelector(".cursor-dot");
+const cursorCircle = cursor.querySelector(".cursor-circle");
+document.addEventListener("mousemove", (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
+    cursorDot.style.top = y + "px";
+    cursorDot.style.left = x + "px";
+    cursorCircle.style.top = y + "px";
+    cursorCircle.style.left = x + "px";
+});
+
+
+
+// Cursor effects on hover website elements.
+const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, menu-show-btn, .menu-hide-btn");
+
+
+cursorHoverlinks.forEach((cursorHoverlink) => {
+    cursorHoverlink.addEventListener("mouseover", () => {
+    cursorDot.classList.add("large");
+    cursorCircle.style.display = "none";
+    });
+});
+
+cursorHoverlinks.forEach((cursorHoverlink) => {
+    cursorHoverlink.addEventListener("mouseout", () => {
+    cursorDot.classList.remove("large");
+    cursorCircle.style.display = "block";
+    });
+});
