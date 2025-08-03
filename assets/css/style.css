@@ -1805,6 +1805,9 @@ body {
 /* =======================Media Queries ================= */
 /* Media Queries (max-width: 1600px) */
 @media screen and (max-width: 1600px) {
+  .cursor {
+    display: none;
+  }
 }
 
 /* Media Queries (max-width: 1200px) */
