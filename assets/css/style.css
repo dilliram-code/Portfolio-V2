@@ -1799,5 +1799,18 @@ body {
 
 .sue-footer .copy-right a:hover {
   color: var(--color-01);
-  transition: 0.35;
+  transition: 0.3s;
+}
+
+/* =======================Media Queries ================= */
+/* Media Queries (max-width: 1600px) */
+@media screen and (max-width: 1600px) {
+}
+
+/* Media Queries (max-width: 1200px) */
+@media screen and (max-width: 1200px) {
+}
+
+/* Media Queries (max-width: 992px) */
+@media and screen (max-width: 992px) {
 }
