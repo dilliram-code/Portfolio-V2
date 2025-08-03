@@ -376,7 +376,7 @@ body {
 
 .theme-btn:hover i {
   color: var(--hover-color);
-  transform: rotate(-15deg);
+  transform: rotate(-30deg);
 }
 
 /* .theme-btn .moon-icon {
@@ -384,36 +384,40 @@ body {
 } */
 
 /* ======================================= */
-/* .theme-btn.active-sun-icon .sun-icon,
+.theme-btn.active-sun-icon .sun-icon,
 .theme-btn .moon-icon {
   opacity: 1;
   transition: 0.3s;
-} */
+}
 
-/* .theme-btn.active-sun-icon .moon-icon,
+.theme-btn.active-sun-icon .moon-icon,
 .theme-btn .sun-icon {
   opacity: 0;
   transition: 0.3s;
-} */
+}
 
 /* =======================AI Generated================== */
 /* Default state (dark theme) - show moon, hide sun */
-.theme-btn .sun-icon {
+/* Initial state: show moon, hide sun */
+/* Default: show moon icon, hide sun */
+/* .sun-icon {
   opacity: 0;
-  transition: 0.3s;
-}
-.theme-btn .moon-icon {
-  opacity: 1;
   transition: 0.3s;
 }
 
-/* When light theme is active - show sun, hide moon */
-.theme-btn.active-sun-icon .sun-icon {
+.moon-icon {
+  opacity: 1;
+  transition: 0.3s;
+} */
+
+/* When theme-btn has active class: show sun icon, hide moon */
+/* .theme-btn.active-sun-icon .sun-icon {
   opacity: 1;
 }
+
 .theme-btn.active-sun-icon .moon-icon {
   opacity: 0;
-}
+} */
 
 /* ======================= Bottom navigation menu ===================== */
 .bottom-nav-container {
