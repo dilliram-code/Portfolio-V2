@@ -330,3 +330,37 @@ ScrollReveal().reveal('#resume .section-content', { delay: 700, origin: 'bottom'
 ScrollReveal().reveal('.service-card, .portfolio-card, .contact-item, .contact-social-links li, .footer-menu .menu-item', { delay: 300, origin: 'bottom', interval: 300 });
 ScrollReveal().reveal('.sue-client-swiper, .contact-form-body', { delay: 700, origin: 'right' });
 ScrollReveal().reveal('.contact-info h3', { delay: 100, origin: 'bottom', interval: 300 });
+
+
+
+
+
+// AIR Bubbles
+
+  const container = document.querySelector('.bubble-container');
+
+  function createBubble() {
+    const bubble = document.createElement('div');
+    const size = Math.random() * 40 + 10; // size between 10px and 50px
+    const duration = Math.random() * 10 + 5; // duration between 5s and 15s
+    const left = Math.random() * 100; // position from 0% to 100%
+
+    bubble.className = 'bubble';
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${left}%`;
+    bubble.style.animationDuration = `${duration}s`;
+
+    container.appendChild(bubble);
+
+    // Remove bubble after animation ends
+    setTimeout(() => {
+      container.removeChild(bubble);
+    }, duration * 1000);
+  }
+
+  // Generate a new bubble every 300ms
+  setInterval(createBubble, 300);
+
+
+// AIR Bubbles end
