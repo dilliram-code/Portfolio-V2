@@ -337,9 +337,9 @@ ScrollReveal().reveal('.contact-info h3', { delay: 100, origin: 'bottom', interv
 
 // AIR Bubbles
 
-  const container = document.querySelector('.bubble-container');
+const container = document.querySelector('.bubble-container');
 
-  function createBubble() {
+function createBubble() {
     const bubble = document.createElement('div');
     const size = Math.random() * 40 + 10; // size between 10px and 50px
     const duration = Math.random() * 10 + 5; // duration between 5s and 15s
@@ -355,12 +355,61 @@ ScrollReveal().reveal('.contact-info h3', { delay: 100, origin: 'bottom', interv
 
     // Remove bubble after animation ends
     setTimeout(() => {
-      container.removeChild(bubble);
+    container.removeChild(bubble);
     }, duration * 1000);
-  }
+}
 
   // Generate a new bubble every 300ms
-  setInterval(createBubble, 300);
+setInterval(createBubble, 300);
 
 
 // AIR Bubbles end
+
+
+// Music player
+const audio = document.getElementById('bg-music');
+const muteBtn = document.getElementById('mute-btn');
+
+let userInteracted = false;
+
+function tryPlayAudio() {
+  if (!userInteracted) {
+    userInteracted = true;
+
+    // Set volume initially low
+    audio.volume = 0.05;
+    audio.muted = false;
+
+    // Attempt to play
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Gradually raise volume
+          const targetVolume = 0.15;
+          const step = 0.01;
+          const interval = setInterval(() => {
+            if (audio.volume < targetVolume && !audio.muted) {
+              audio.volume = Math.min(audio.volume + step, targetVolume);
+            } else {
+              clearInterval(interval);
+            }
+          }, 200);
+        })
+        .catch(error => {
+          console.log("Playback blocked:", error);
+        });
+    }
+  }
+}
+
+// Detect first real interaction
+document.addEventListener("click", tryPlayAudio, { once: true });
+document.addEventListener("keydown", tryPlayAudio, { once: true });
+document.addEventListener("scroll", tryPlayAudio, { once: true });
+
+// Toggle mute/unmute
+muteBtn.addEventListener("click", () => {
+  audio.muted = !audio.muted;
+  muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+});
