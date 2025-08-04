@@ -4,9 +4,9 @@
 /*========================= CSS VARIABLES =========================*/
 
 :root {
-  --hue: 217;
-  --sat: 85%;
-  --light: 74%;
+  --hue: 181;
+  --sat: 47%;
+  --light: 49%;
 
   --primary-color: hsl(var(--hue), var(--sat), var(--light));
   --white-color: hsl(var(--hue), 45%, 98%);
@@ -72,7 +72,7 @@
   --z-fixed: 1100;
   --z-overlay: 1110;
   --z-modal: 1990;
-  --z-max: 9999;
+  --z-max: 999999;
 }
 
 /*========================= RESET =========================*/
@@ -158,7 +158,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 95px;
+  margin-bottom: 80px;
 }
 
 .section-title h3 {
@@ -654,16 +654,19 @@ body {
 
 .avatar-img {
   position: relative;
-  width: 380px;
-  height: 380px;
-  clip-path: ellipse(75% 50% at 50% 45%); /* This is only for trial*/
+  width: 400px;
+  height: 400px;
+  margin-bottom: 190px;
+  /* clip-path: ellipse(75% 50% at 50% 45%);  */
+  /* This is only for trial */
   /* clip-path: ellipse(100% 50% at 50% 70%); */
 }
 
 .avatar-img img {
   position: absolute;
-  width: 85%;
-  /* width: 100%; */
+  /* width: 85%; */
+  width: 100%;
+  
 }
 
 .home-social {
@@ -788,6 +791,7 @@ body {
 .about-img img {
   width: 100%;
   border-radius: 15px;
+  /* clip-path: circle(50% at 50% 50%); */
 }
 
 .about-details {
@@ -2085,9 +2089,11 @@ body {
     width: 100%;
   }
   .avatar-img {
-    width: 85%;
+    width: 80%;
     height: fit-content;
     padding-bottom: 94%;
+    display: block;
+    margin: 0 auto;
   }
   .bottom-nav {
     width: 100%;
