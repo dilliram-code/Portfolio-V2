@@ -1862,5 +1862,58 @@ body {
 }
 
 /* Media Queries (max-width: 992px) */
-@media and screen (max-width: 992px) {
+@media screen and (max-width: 992px) {
+  .avatar-container {
+    flex-direction: column-reverse;
+    row-gap: 10px;
+  }
+  .avatar-container .hire-btn-01 {
+    display: block;
+  }
+  .avatar-container .hire-btn-02 {
+    display: none;
+  }
+  .avatar-img {
+    width: 350px;
+  }
+  .avatar-info .text-content {
+    align-items: center;
+    text-align: center;
+  }
+  .service-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .portfolio-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .swiper {
+    max-width: 700px;
+    height: 450px;
+  }
+  .swiper-slide {
+    flex-direction: column;
+  }
+  .swiper-slide .client-img {
+    margin-bottom: 35px;
+  }
+  .swiper-slide .client-details {
+    text-align: center;
+  }
+  .contact-container {
+    flex-direction: column;
+    row-gap: 75px;
+  }
+  .contact-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .contact-social-links {
+    width: 100%;
+    display: flex;
+    column-gap: 25px;
+    justify-content: center;
+  }
 }
