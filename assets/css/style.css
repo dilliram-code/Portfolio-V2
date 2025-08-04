@@ -1035,7 +1035,7 @@ body {
 
 .skill-categories {
   display: grid;
-  place-items: center;
+  place-items: start;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 65px;
   row-gap: 35px;
@@ -1916,4 +1916,122 @@ body {
     column-gap: 25px;
     justify-content: center;
   }
+}
+
+/* ===================================
+    Media Queries (max-width: 768px)
+====================================== */
+@media screen and (max-width: 768px) {
+  :root {
+    /* ======= Font sizes ======= */
+    --h1-font-size: 2.3rem;
+    --h2-font-size: 1.97rem;
+    --h3-font-size: 1.75rem;
+    --h4-font-size: 1.3rem;
+    --h5-font-size: 1.05rem;
+
+    --xlarge-font-size: 1.28rem;
+    --large-font-size: 1.13rem;
+    --medium-font-size: 1.06rem;
+    --base-font-size: 1rem;
+    --small-font-size: 0.93rem;
+    --tiny-font-size: 0.88rem;
+  }
+
+  .sue-container {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  .sue-logo a {
+    font-size: 2.35rem;
+  }
+
+  .lets-talk-btn {
+    display: none;
+  }
+
+  .lets-talk-icon {
+    font-size: 1.6rem;
+    display: block;
+  }
+  .theme-btn i {
+    font-size: 1.6rem;
+  }
+  .bottom-nav {
+    bottom: -30px;
+  }
+  .bottom-nav.active {
+    bottom: 30px;
+  }
+  .bottom-nav .menu li a i {
+    font-size: 1.25rem;
+  }
+  .home-social .social-line {
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
+  .resume-items .item .info {
+    width: 185px;
+    column-gap: 15px;
+  }
+  .resume-items .item-left .info {
+    right: 25px;
+  }
+  .resume-items .item-right .info {
+    left: 75px;
+  }
+  .resume-items .item .info i {
+    display: none;
+  }
+  .skill-card {
+    padding: 50px 0;
+  }
+  .skill i {
+    font-size: 1.25rem;
+  }
+  .service-container {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 30px;
+  }
+  .service-card {
+    width: 245px;
+    height: 250px;
+  }
+  .service-icon {
+    font-size: 3.25rem;
+  }
+  .service-info h4 {
+    white-space: wrap;
+    max-width: unset;
+  }
+  .service-modal {
+    padding: 50px 20px;
+  }
+  .portfolio-container {
+    row-gap: 35px;
+  }
+  .portfolio-modal {
+    padding: 50px 20px;
+  }
+  .swiper-button-next i,
+  .swiper-button-prev i {
+    font-size: 4rem;
+  }
+  .contact-form-body {
+    padding: 35px;
+    border-radius: 10px;
+  }
+  .footer-menu {
+    column-gap: 10px;
+  }
+  .to-top-btn.active {
+    right: 20px;
+  }
+}
+
+/* ===================================
+    Media Queries (max-width: 480px)
+====================================== */
+@media screen and (max-width: 480px) {
 }
