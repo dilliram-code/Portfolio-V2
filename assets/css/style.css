@@ -72,7 +72,7 @@
   --z-fixed: 1100;
   --z-overlay: 1110;
   --z-modal: 1990;
-  --z-max: 999999;
+  --z-max: 99999999;
 }
 
 /*========================= RESET =========================*/
@@ -355,6 +355,23 @@ body {
 .lets-talk-icon:hover {
   color: var(--hover-color);
 }
+/* ================== Floating mute button ================= */
+#mute-btn {
+  color: var(--color-01);
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: 0.3s;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+#mute-btn:hover {
+  color: var(--hover-color);
+}
+/* =================Floating Button ends ====================== */
 
 /* ====================== Dark/Light theme buttons ===============*/
 .theme-btn {
@@ -2251,18 +2268,3 @@ body {
 }
 
 /* ===================AIR Bubbles End ====================== */
-
-/* ================== Floating mute button ================= */
-#mute-btn {
-  padding: 5px 5px;
-  color: teal;
-  font-size: 12px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-#mute-btn:hover {
-  background-color: #f0f0f0;
-}
-/* =================Floating Button ends ====================== */
