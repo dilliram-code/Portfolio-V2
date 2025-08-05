@@ -2268,6 +2268,7 @@ body {
 }
 
 /* ===================AIR Bubbles End ====================== */
+/* ===================Auto Typing=========================== */
 h3.my-profession {
   font-size: 30px;
   margin: 15px 0;
@@ -2276,3 +2277,4 @@ h3.my-profession {
 .typing {
   color: dodgerblue;
 }
+/* ===================Auto Typing Ends here ================ */
