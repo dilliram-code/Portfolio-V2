@@ -409,7 +409,21 @@ document.addEventListener("keydown", tryPlayAudio, { once: true });
 document.addEventListener("scroll", tryPlayAudio, { once: true });
 
 // Toggle mute/unmute
+// muteBtn.addEventListener("click", () => {
+//   audio.muted = !audio.muted;
+//   muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+// });
+
 muteBtn.addEventListener("click", () => {
-  audio.muted = !audio.muted;
-  muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+audio.muted = !audio.muted;
+
+const icon = muteBtn.querySelector("i");
+
+if (audio.muted) {
+    icon.classList.remove("ri-volume-up-fill");
+    icon.classList.add("ri-volume-mute-fill");
+} else {
+    icon.classList.remove("ri-volume-mute-fill");
+    icon.classList.add("ri-volume-up-fill");
+}
 });

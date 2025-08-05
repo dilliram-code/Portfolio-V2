@@ -2217,8 +2217,8 @@ body {
   .to-top-btn {
     display: none;
   }
-  .copy-right{
-    text-align:center;
+  .copy-right {
+    text-align: center;
   }
 }
 
@@ -2253,20 +2253,14 @@ body {
 /* ===================AIR Bubbles End ====================== */
 
 /* ================== Floating mute button ================= */
-/* #mute-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999999;
-  background-color: #ffffffdd;
-  border: none;
-  border-radius: 50%;
-  padding: 10px 12px;
-  font-size: 18px;
+#mute-btn {
+  padding: 5px 5px;
+  color: teal;
+  font-size: 12px;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
   transition: background-color 0.3s ease;
-} */
+}
 
 #mute-btn:hover {
   background-color: #f0f0f0;
