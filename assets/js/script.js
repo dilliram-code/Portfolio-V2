@@ -1,3 +1,11 @@
+var typed = new Typed(".typing", {
+  strings: ["","a web designer", "an ML learner", "a fitness freak", "a science geek"],
+  typeSpeed: 50,
+  backSpeed: 60,
+  loop:true
+})
+
+
 const resumeTabs = document.querySelector(".resume-tabs");
 const resumePortfolioTabBtns = resumeTabs.querySelectorAll(".tab-btn");
 const resumeTabContents = document.querySelectorAll(".resume-tab-content");
@@ -129,17 +137,17 @@ portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
 
 // testimonials swipper
 var swiper = new Swiper(".sue-client-swiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
         el: ".swiper-pagination",
         clickable: true,
-      },
-      navigation: {
+    },
+    navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
-      },
+    },
     });
 
 
@@ -373,7 +381,7 @@ const muteBtn = document.getElementById('mute-btn');
 let userInteracted = false;
 
 function tryPlayAudio() {
-  if (!userInteracted) {
+if (!userInteracted) {
     userInteracted = true;
 
     // Set volume initially low
@@ -383,36 +391,30 @@ function tryPlayAudio() {
     // Attempt to play
     const playPromise = audio.play();
     if (playPromise !== undefined) {
-      playPromise
+    playPromise
         .then(() => {
           // Gradually raise volume
-          const targetVolume = 0.15;
-          const step = 0.01;
-          const interval = setInterval(() => {
+        const targetVolume = 0.30;
+        const step = 0.02;
+        const interval = setInterval(() => {
             if (audio.volume < targetVolume && !audio.muted) {
-              audio.volume = Math.min(audio.volume + step, targetVolume);
+            audio.volume = Math.min(audio.volume + step, targetVolume);
             } else {
-              clearInterval(interval);
+            clearInterval(interval);
             }
-          }, 200);
+        }, 200);
         })
         .catch(error => {
-          console.log("Playback blocked:", error);
+        console.log("Playback blocked:", error);
         });
     }
-  }
+}
 }
 
 // Detect first real interaction
 document.addEventListener("click", tryPlayAudio, { once: true });
 document.addEventListener("keydown", tryPlayAudio, { once: true });
 document.addEventListener("scroll", tryPlayAudio, { once: true });
-
-// Toggle mute/unmute
-// muteBtn.addEventListener("click", () => {
-//   audio.muted = !audio.muted;
-//   muteBtn.textContent = audio.muted ? "🔇" : "🔊";
-// });
 
 muteBtn.addEventListener("click", () => {
 audio.muted = !audio.muted;
