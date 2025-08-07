@@ -130,13 +130,14 @@
   }
 
   .bubble {
-    position: absolute;
-    bottom: -100px;
-    /* background: rgba(19, 26, 89, 0.46); */
     background: teal;
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: floatUp linear infinite;
+  }
+  .contact-form-body {
+    box-shadow: 0 2px 4px hsl(0, 0%, 1%, 0.3);
+  }
+  .contact-form-body form .input-group input,
+  .contact-form-body form .input-group textarea {
+    color: hsl(0, 0%, 1%, 0.6);
   }
 }
 /*========================= RESET =========================*/
