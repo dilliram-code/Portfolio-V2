@@ -316,8 +316,24 @@ const themeBtn = document.querySelector(".theme-btn");
 themeBtn.addEventListener("click", () => {
     themeBtn.classList.toggle("active-sun-icon");
     document.body.classList.toggle("light-theme");
+
+
+    // Save theme icon and theme on click theme button.
+const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon";
+const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light": "dark";
+localStorage.setItem("sue-saved-icon", getCurrentIcon());
+localStorage.setItem("sue-saved-theme", getCurrentTheme());
+
 });
 
+
+// Get saved theme icon and theme on document Loaded.
+const savedIcon = localStorage.getItem("sue-saved-icon");
+const savedTheme = localStorage.getItem("sue-saved-theme");
+document.addEventListener("DOMContentLoaded", () => {
+    themeBtn.classList[savedIcon === "sun"? "add": "remove"]("active-sun-icon");
+    document.body.classList[savedTheme === "light" ? "add": "remove"]("light-theme");
+});
 
 // Scroll Reveal JS
 // Common reveal options to create reveal animations.
