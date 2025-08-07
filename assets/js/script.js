@@ -293,7 +293,7 @@ document.addEventListener("mousemove", (e) => {
 
 
 // Cursor effects on hover website elements.
-const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, menu-show-btn, .menu-hide-btn");
+const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
 
 
 cursorHoverlinks.forEach((cursorHoverlink) => {
@@ -429,3 +429,8 @@ if (audio.muted) {
     icon.classList.add("ri-volume-up-fill");
 }
 });
+
+
+
+
+// Loader animation

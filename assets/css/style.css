@@ -1,6 +1,7 @@
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Clicker+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 /*========================= CSS VARIABLES =========================*/
 
 :root {
@@ -74,7 +75,16 @@
   --z-modal: 1990;
   --z-max: 99999999;
 }
-
+/* ========================LIGHT THEME================ */
+/* ========== Changeable colors for dark/Light themes ======== */
+.light-theme {
+  --color-01: hsl(var(--hue) 26% 12%); /* primary to dark */
+  --color-02: hsl(var(--hue) 26% 12%); /* white to dark */
+  --color-03: hsl(var(--hue) 45% 98%); /* dark to white */
+  --color-04: hsl(var(--hue) 9% 46%); /* Light-graygray to dark-gray */
+  --color-05: hsl(var(--hue) var(--sat) var(--light)); /* dark to primary */
+  --body-color: hsl(var(--hue) 45% 98%); /* dark to white */
+}
 /*========================= RESET =========================*/
 * {
   box-sizing: border-box;
@@ -127,6 +137,7 @@ body {
   color: var(--color-04);
   background: var(--body-color);
   transition: background 0.3s, color 0.3s;
+  /* overflow: hidden; Disable scroll during load */
 }
 
 /* ====================== Reusable Styles ==================== */
@@ -183,7 +194,8 @@ body {
 
 /* ================Customized cursor============== */
 .cursor {
-  z-index: var(--z-max);
+  /* z-index: var(--z-max); */
+  z-index: 9999999999999;
   position: fixed;
   /* top: 50%; */
   /* left: 50%; */
@@ -427,6 +439,7 @@ body {
 /* When light theme is active - show sun, hide moon */
 .theme-btn.active-sun-icon .sun-icon {
   opacity: 1;
+  transition: 0.3s;
 }
 .theme-btn.active-sun-icon .moon-icon {
   opacity: 0;
@@ -459,6 +472,13 @@ body {
   position: relative;
 }
 
+.my-name {
+  font-family: "Clicker Script", cursive;
+  letter-spacing: 1.5px;
+  /* margin-left: 10px; */
+  /* margin: 10px 5px; */
+  padding: 5px 2px;
+}
 .bottom-nav .menu {
   background: var(--bottom-nav-bg);
   backdrop-filter: blur (10px);
@@ -683,8 +703,11 @@ body {
   position: absolute;
   /* width: 85%; */
   width: 100%;
+  transition: filter 0.5s ease;
 }
-
+.avatar-img img:hover {
+  filter: brightness(1.2);
+}
 .home-social {
   position: absolute;
   left: 0;
@@ -2278,3 +2301,6 @@ h3.my-profession {
   color: dodgerblue;
 }
 /* ===================Auto Typing Ends here ================ */
+/* ====================Loader Animation===================== */
+
+/* ====================Loader Animation ends================ */
