@@ -448,5 +448,22 @@ if (audio.muted) {
 
 
 
+// Portfolio image changing logic while changing the theme.
+// const themeButton = document.querySelector(".theme-btn");
+// const avatarImg = document.getElementById("avatar-imgImg");
 
-// Loader animation
+//   // Image paths
+// const lightImage = "assets/images/avatarImages/colourful.webp";
+// const darkImage = "assets/images/avatarImages/blacky.webp";
+
+// themeButton.addEventListener("click", () => {
+//     document.body.classList.toggle("light-theme");
+
+//     // Check if we're in light theme
+// if (document.body.classList.contains("light-theme")) {
+//     avatarImg.src = lightImage;
+//     } else {
+//     avatarImg.src = darkImage;
+//     }
+// });
+
