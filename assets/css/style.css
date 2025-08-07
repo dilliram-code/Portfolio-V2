@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Clicker+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-/*========================= CSS VARIABLES =========================*/
 
+/*========================= CSS VARIABLES =========================*/
 :root {
   --hue: 181;
   --sat: 47%;
@@ -73,7 +73,7 @@
   --z-fixed: 1100;
   --z-overlay: 1110;
   --z-modal: 1990;
-  --z-max: 99999999;
+  --z-max: 9999;
 }
 /* ========================LIGHT THEME================ */
 /* ========== Changeable colors for dark/Light themes ======== */
@@ -126,7 +126,7 @@
   }
 
   .to-top-btn {
-    background: hsl (var(--hue) 26% 12% / 0.2);
+    background: hsl(var(--hue) 26% 12% / 0.2);
   }
 }
 /*========================= RESET =========================*/
@@ -452,24 +452,7 @@ body {
   transform: rotate(-15deg);
 }
 
-/* .theme-btn .moon-icon {
-  display: none;
-} */
-
-/* ======================================= */
-/* .theme-btn.active-sun-icon .sun-icon,
-.theme-btn .moon-icon {
-  opacity: 1;
-  transition: 0.3s;
-} */
-
-/* .theme-btn.active-sun-icon .moon-icon,
-.theme-btn .sun-icon {
-  opacity: 0;
-  transition: 0.3s;
-} */
-
-/* =======================AI Generated================== */
+/* =======================AI Generated, working code================== */
 /* Default state (dark theme) - show moon, hide sun */
 .theme-btn .moon-icon {
   opacity: 0;
