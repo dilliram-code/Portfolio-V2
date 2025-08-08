@@ -179,14 +179,11 @@ sueContactFormAlert.title = error;
                         });
                     });
 
-
 // Shrink the height of the header on scroll
 window.addEventListener("scroll", () => {
 const sueHeader = document.querySelector(".sue-header");
 sueHeader.classList.toggle("shrink", window.scrollY > 0);
 });
-
-
 
 
 // Each bottom navigation menu items active on page scroll.
@@ -323,9 +320,7 @@ const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "s
 const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light": "dark";
 localStorage.setItem("sue-saved-icon", getCurrentIcon());
 localStorage.setItem("sue-saved-theme", getCurrentTheme());
-
 });
-
 
 // Get saved theme icon and theme on document Loaded.
 const savedIcon = localStorage.getItem("sue-saved-icon");
@@ -343,6 +338,7 @@ ScrollReveal({
     duration: 2500,
     delay: 400
 });
+
 // Target elements and specify options to create reveal animations.
 ScrollReveal().reveal('.avatar-img', { delay: 100, origin: 'top' });
 ScrollReveal().reveal('.avatar-info, .section-title', { delay: 300, origin: 'top' });
