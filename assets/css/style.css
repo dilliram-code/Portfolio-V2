@@ -254,7 +254,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100;
   pointer-events: none;
 }
 .cursor-dot {
@@ -1888,7 +1888,7 @@ body {
 /* Media Queries (max-width: 1600px) */
 @media screen and (max-width: 1600px) {
   .cursor {
-    display: none;
+    /* display: none; */
   }
 
   .sue-container {
