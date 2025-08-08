@@ -250,9 +250,9 @@ body {
 /* ================Customized cursor============== */
 .cursor {
   z-index: var(--z-max);
-  position: fixed;
-  /* top: 50%; */
-  /* left: 50%; */
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
   pointer-events: none;
 }
 .cursor-dot {
@@ -1886,7 +1886,7 @@ body {
 /* Media Queries (max-width: 1600px) */
 @media screen and (max-width: 1600px) {
   .cursor {
-    display: none;
+    /* display: none; */
   }
 
   .sue-container {
