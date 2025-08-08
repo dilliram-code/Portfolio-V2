@@ -139,6 +139,10 @@
   .contact-form-body form .input-group textarea {
     color: hsl(0, 0%, 1%, 0.6);
   }
+  .floating-quote {
+    color: teal;
+    weight: 500;
+  }
 }
 /*========================= RESET =========================*/
 * {
@@ -2343,3 +2347,19 @@ h3.my-profession {
 /* ====================Loader Animation===================== */
 
 /* ====================Loader Animation ends================ */
+/* =========================Quatation======================= */
+.floating-quote {
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(5px); /* glass effect */
+  padding: 12px 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+  z-index: 999;
+  pointer-events: none; /* So it doesn't block clicks */
+}
