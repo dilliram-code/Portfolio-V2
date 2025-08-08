@@ -1891,7 +1891,7 @@ body {
 /* =======================Media Queries ================= */
 /* Media Queries (max-width: 1600px) */
 @media screen and (max-width: 1600px) {
-  .cursor {
+  .cursor-symbol {
     /* display: none; */
   }
 
@@ -2302,6 +2302,13 @@ body {
   }
   .copy-right {
     text-align: center;
+  }
+  .cursor-symbol {
+    display: none;
+  }
+  .bottom-nav-inner {
+    position: relative;
+    margin-bottom: 40px;
   }
 }
 

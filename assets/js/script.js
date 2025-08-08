@@ -275,7 +275,7 @@ scrollIndicatorBar.style.height = scrollValue + "%";
 
 
 // Customized cursor on mousemove
-const cursor = document.querySelector(".cursor");
+const cursor = document.querySelector(".cursor-symbol");
 const cursorDot = cursor.querySelector(".cursor-dot");
 const cursorCircle = cursor.querySelector(".cursor-circle");
 document.addEventListener("mousemove", (e) => {
