@@ -2201,7 +2201,8 @@ body {
     bottom: -30px;
   }
   .menu-show-btn.active {
-    bottom: 30px;
+    bottom: 70px;
+    /* display:none; */
   }
   .menu-show-btn .bar-01,
   .menu-show-btn .bar-02 {
