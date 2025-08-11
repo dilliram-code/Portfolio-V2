@@ -2371,3 +2371,33 @@ h3.my-profession {
   z-index: 999;
   pointer-events: none; /* So it doesn't block clicks */
 }
+
+/* ======================Gradient for my name ===================== */
+
+@keyframes rainbowGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.my-name {
+  background: linear-gradient(
+    270deg,
+    #ff3c78,
+    #ffcc00,
+    #00f0ff,
+    #7545e3ff,
+    #7c00ff
+  );
+  background-size: 1000% 1000%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowGradient 8s ease infinite;
+  text-align: center;
+}
