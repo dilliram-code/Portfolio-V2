@@ -275,37 +275,122 @@ scrollIndicatorBar.style.height = scrollValue + "%";
 
 
 // Customized cursor on mousemove
-const cursor = document.querySelector(".cursor-symbol");
-const cursorDot = cursor.querySelector(".cursor-dot");
-const cursorCircle = cursor.querySelector(".cursor-circle");
-document.addEventListener("mousemove", (e) => {
-    let x = e.clientX;
-    let y = e.clientY;
-    cursorDot.style.top = y + "px";
-    cursorDot.style.left = x + "px";
-    cursorCircle.style.top = y + "px";
-    cursorCircle.style.left = x + "px";
-});
+// const cursor = document.querySelector(".cursor-symbol");
+// const cursorDot = cursor.querySelector(".cursor-dot");
+// const cursorCircle = cursor.querySelector(".cursor-circle");
+// document.addEventListener("mousemove", (e) => {
+//     let x = e.clientX;
+//     let y = e.clientY;
+//     cursorDot.style.top = y + "px";
+//     cursorDot.style.left = x + "px";
+//     cursorCircle.style.top = y + "px";
+//     cursorCircle.style.left = x + "px";
+// });
 
 
 
-// Cursor effects on hover website elements.
-const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
+// // Cursor effects on hover website elements.
+// const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
 
 
-cursorHoverlinks.forEach((cursorHoverlink) => {
-    cursorHoverlink.addEventListener("mouseover", () => {
-    cursorDot.classList.add("large");
-    cursorCircle.style.display = "none";
-    });
-});
+// cursorHoverlinks.forEach((cursorHoverlink) => {
+//     cursorHoverlink.addEventListener("mouseover", () => {
+//     cursorDot.classList.add("large");
+//     cursorCircle.style.display = "none";
+//     });
+// });
 
-cursorHoverlinks.forEach((cursorHoverlink) => {
-    cursorHoverlink.addEventListener("mouseout", () => {
-    cursorDot.classList.remove("large");
-    cursorCircle.style.display = "block";
-    });
-});
+// cursorHoverlinks.forEach((cursorHoverlink) => {
+//     cursorHoverlink.addEventListener("mouseout", () => {
+//     cursorDot.classList.remove("large");
+//     cursorCircle.style.display = "block";
+//     });
+// });
+
+
+
+// Test code for the custom cursor 
+(function () {
+        // Locate cursor element (support both .cursor-symbol and .cursor)
+        const cursor =
+          document.querySelector(".cursor-symbol") ||
+          document.querySelector(".cursor");
+        if (!cursor) return; // nothing to do
+
+        // Ensure cursor is appended to body (prevents issues if parent uses CSS transform)
+        if (cursor.parentElement !== document.body)
+          document.body.appendChild(cursor);
+
+        const cursorDot = cursor.querySelector(".cursor-dot");
+        const cursorCircle = cursor.querySelector(".cursor-circle");
+        if (!cursorDot || !cursorCircle) return;
+
+        // Smooth follow variables
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let targetX = mouseX;
+        let targetY = mouseY;
+
+        // Update target on pointer move (works for mouse + touch pen)
+        document.addEventListener(
+          "pointermove",
+          (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+          },
+          { passive: true }
+        );
+
+        // Render loop (easing for smooth trailing)
+        function animate() {
+          // easing factor (0 < f < 1) — smaller = smoother/laggier
+          const f = 0.35;
+          mouseX += (targetX - mouseX) * f;
+          mouseY += (targetY - mouseY) * f;
+
+          // apply transforms (translate3d for GPU acceleration)
+          const isLarge = cursorDot.classList.contains("large");
+          cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) ${
+            isLarge ? "scale(12)" : "scale(1)"
+          }`;
+          cursorCircle.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+
+        // Hover target selector (same as your original list)
+        const hoverSelector =
+          "body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn";
+
+        // Use event delegation so dynamic elements or newly-rendered sections are handled
+        document.addEventListener("pointerover", (e) => {
+          if (e.target.closest(hoverSelector)) {
+            cursorDot.classList.add("large");
+            cursorCircle.style.display = "none";
+          }
+        });
+
+        document.addEventListener("pointerout", (e) => {
+          // only remove if the pointer didn't immediately land on another hover target
+          // (relatedTarget may be null in some cases)
+          const toEl = e.relatedTarget;
+          if (!toEl || !toEl.closest || !toEl.closest(hoverSelector)) {
+            cursorDot.classList.remove("large");
+            cursorCircle.style.display = "block";
+          }
+        });
+
+        // small polish: hide if pointer leaves the window
+        document.addEventListener("mouseleave", () => {
+          cursorDot.style.opacity = "0";
+          cursorCircle.style.opacity = "0";
+        });
+        document.addEventListener("mouseenter", () => {
+          cursorDot.style.opacity = "1";
+          cursorCircle.style.opacity = "0.6";
+        });
+      })();
 
 
 // Change theme and save current theme on click the theme button.
