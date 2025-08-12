@@ -813,6 +813,7 @@ body {
   white-space: nowrap;
   transform: rotateZ(-90deg);
   transform-origin: left;
+  z-index: 0;
 }
 
 .home-social .social-line {
@@ -822,6 +823,8 @@ body {
   margin-top: 37px;
   margin-bottom: 25px;
   margin-left: 10px;
+  position: relative; /* creates stacking context */
+  z-index: 1; /* ensures it's above the rotated text */
 }
 
 .home-social .social-icons {
