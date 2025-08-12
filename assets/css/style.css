@@ -787,14 +787,10 @@ body {
   width: 400px;
   height: 400px;
   margin-bottom: 190px;
-  /* clip-path: ellipse(75% 50% at 50% 45%);  */
-  /* This is only for trial */
-  /* clip-path: ellipse(100% 50% at 50% 70%); */
 }
 
 .avatar-img img {
   position: absolute;
-  /* width: 85%; */
   width: 100%;
   transition: filter 0.5s ease;
 }
