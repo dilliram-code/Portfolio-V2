@@ -115,13 +115,13 @@
     box-shadow: 0 2px 4px hsl(0, 0%, 1%, 0.3);
   }
 
-  .sue-footer.copy-right {
+  .dr-footer.copy-right {
     color: hsl(var(--hue) 26% 30%);
   }
-  .sue-footer.copy-right a {
+  .dr-footer.copy-right a {
     color: hsl(var(--hue) 26% 30%);
   }
-  .sue-footer .copy-right a:hover {
+  .dr-footer .copy-right a:hover {
     color: hsl(var(--hue) 0% 0%);
   }
 
@@ -200,24 +200,24 @@ body {
 }
 
 /* ====================== Reusable Styles ==================== */
-.sue-section {
+.dr-section {
   position: relative;
   overflow: hidden;
 }
 
-.sue-container {
+.dr-container {
   max-width: 1170px;
   /* max-width: 1000px; */
   margin-left: auto;
   margin-right: auto;
 }
 
-.sue-sub-container {
+.dr-sub-container {
   padding-top: 7em;
   padding-bottom: 5em;
 }
 
-.sue-wrapper {
+.dr-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -389,7 +389,7 @@ body {
   opacity: 0.5;
 }
 /* ======================= BUTTONS ============================ */
-.sue-main-btn {
+.dr-main-btn {
   width: fit-content;
   padding: 14px 30px;
   border-radius: 35px;
@@ -397,19 +397,19 @@ body {
   transition: 0.3s;
 }
 
-.sue-main-btn:hover {
+.dr-main-btn:hover {
   color: var(--white-color);
   background: var(--hover-color);
   border: 2px solid var(--hover-color);
 }
-.sue-main-btn a {
+.dr-main-btn a {
   color: var(--color-01);
   font-size: var(--small-font-size);
   font-weight: 500;
   transition: 0.3s;
 }
 
-.sue-main-btn:hover a {
+.dr-main-btn:hover a {
   color: var(--white-color);
 }
 
@@ -427,7 +427,7 @@ body {
 }
 
 /* =======================HEADER====================== */
-.sue-header {
+.dr-header {
   z-index: var(--z-fixed);
   position: fixed;
   width: 100%;
@@ -437,26 +437,26 @@ body {
   transition: 0.3s ease;
 }
 
-.sue-header.shrink {
+.dr-header.shrink {
   background: var(--body-color);
   padding: 12px 0;
 }
 
-.sue-header .inner {
+.dr-header .inner {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.sue-logo a {
+.dr-logo a {
   color: var(--color-01);
   font-size: 2.6rem;
   font-weight: var(--font-semi-bold);
   letter-spacing: -3px;
   transition: 0.3s;
 }
-.sue-logo a:hover {
+.dr-logo a:hover {
   color: var(--hover-color);
 }
 
@@ -768,7 +768,7 @@ body {
 .home-container {
   height: 100vh;
 }
-.home-container .sue-wrapper {
+.home-container .dr-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1891,13 +1891,13 @@ body {
 }
 
 /* ==========================FOOTER====================== */
-.sue-footer {
+.dr-footer {
   background: var(--footer-bg);
   padding-top: 100px;
   padding-bottom: 165px;
 }
 
-.sue-footer .sue-container .inner {
+.dr-footer .dr-container .inner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1928,13 +1928,13 @@ body {
   color: var(--color-03);
   background: var(--color-01);
 }
-.sue-footer .copy-right {
+.dr-footer .copy-right {
   color: var(--color-04);
   font-size: var(--small-font-size);
   margin-top: 10px;
 }
 
-.sue-footer .copy-right a:hover {
+.dr-footer .copy-right a:hover {
   color: var(--color-01);
   transition: 0.3s;
 }
@@ -1946,7 +1946,7 @@ body {
     /* display: none; */
   }
 
-  .sue-container {
+  .dr-container {
     max-width: 1075px;
   }
 
@@ -1958,7 +1958,7 @@ body {
 
 /* Media Queries (max-width: 1200px) */
 @media screen and (max-width: 1200px) {
-  .sue-container {
+  .dr-container {
     max-width: 100%;
     margin-left: 50px;
     margin-right: 50px;
@@ -2075,12 +2075,12 @@ body {
     --tiny-font-size: 0.88rem;
   }
 
-  .sue-container {
+  .dr-container {
     margin-left: 25px;
     margin-right: 25px;
   }
 
-  .sue-logo a {
+  .dr-logo a {
     font-size: 2.35rem;
   }
 
@@ -2186,17 +2186,17 @@ body {
     --small-font-size: 0.9rem;
     --tiny-font-size: 0.85rem;
   }
-  .sue-container {
+  .dr-container {
     margin-left: 20px;
     margin-right: 20px;
   }
-  .sue-header {
+  .dr-header {
     padding: 20px 0;
   }
   .header-btns {
     column-gap: 15px;
   }
-  .home-container .sue-wrapper {
+  .home-container .dr-wrapper {
     flex-direction: column-reverse;
   }
   .home-social {
@@ -2454,7 +2454,7 @@ h3.my-profession {
 }
 
 /* =========================logo Animation======================= */
-.sue-logo {
+.dr-logo {
   display: flex;
   align-items: center;
   gap: 5px; /* space between sword and text */

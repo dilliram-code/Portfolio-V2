@@ -136,7 +136,7 @@ portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
             });
 
 // testimonials swipper
-var swiper = new Swiper(".sue-client-swiper", {
+var swiper = new Swiper(".dr-client-swiper", {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
@@ -160,29 +160,29 @@ var swiper = new Swiper(".sue-client-swiper", {
         })();
     
     
-sueContactForm = document.getElementById("sue-contact-form");
-sueContactFormAlert = document.querySelector(".contact-form-alert");
-sueContactForm.addEventListener('submit', function(event) {
+drContactForm = document.getElementById("dr-contact-form");
+drContactFormAlert = document.querySelector(".contact-form-alert");
+drContactForm.addEventListener('submit', function(event) {
 event.preventDefault();
 // these IDs from the previous steps
-emailjs.sendForm('service_f7fz87m', 'template_965xjpo', '#sue-contact-form').then(() => {
+emailjs.sendForm('service_f7fz87m', 'template_965xjpo', '#dr-contact-form').then(() => {
         // console.log('SUCCESS!');
-sueContactFormAlert.innerHTML = "<span>Your message sent successfully!</span><i class='ri-checkbox-circle-fill'></i>";
-sueContactForm.reset();
+drContactFormAlert.innerHTML = "<span>Your message sent successfully!</span><i class='ri-checkbox-circle-fill'></i>";
+drContactForm.reset();
 setTimeout(() => {
-            sueContactFormAlert.innerHTML = "";
+            drContactFormAlert.innerHTML = "";
             }, 3000);
                         }, (error) => {
         // console.log('FAILED...', error);
-sueContactFormAlert.innerHTML = "<span>Message not sent!</span><i class='ri-error-warning-fill'></i>";
-sueContactFormAlert.title = error;
+drContactFormAlert.innerHTML = "<span>Message not sent!</span><i class='ri-error-warning-fill'></i>";
+drContactFormAlert.title = error;
                         });
                     });
 
 // Shrink the height of the header on scroll
 window.addEventListener("scroll", () => {
-const sueHeader = document.querySelector(".sue-header");
-sueHeader.classList.toggle("shrink", window.scrollY > 0);
+const drHeader = document.querySelector(".dr-header");
+drHeader.classList.toggle("shrink", window.scrollY > 0);
 });
 
 
@@ -290,7 +290,7 @@ scrollIndicatorBar.style.height = scrollValue + "%";
 
 
 // // Cursor effects on hover website elements.
-// const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
+// const cursorHoverlinks = document.querySelectorAll("body a, .theme-btn, .dr-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn");
 
 
 // cursorHoverlinks.forEach((cursorHoverlink) => {
@@ -317,7 +317,7 @@ scrollIndicatorBar.style.height = scrollValue + "%";
           document.querySelector(".cursor");
         if (!cursor) return; // nothing to do
 
-        // Ensure cursor is appended to body (prevents issues if parent uses CSS transform)
+        // Ensure cursor is appended to body (prevents isdrs if parent uses CSS transform)
         if (cursor.parentElement !== document.body)
           document.body.appendChild(cursor);
 
@@ -361,7 +361,7 @@ scrollIndicatorBar.style.height = scrollValue + "%";
 
         // Hover target selector (same as your original list)
         const hoverSelector =
-          "body a, .theme-btn, .sue-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn";
+          "body a, .theme-btn, .dr-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn";
 
         // Use event delegation so dynamic elements or newly-rendered sections are handled
         document.addEventListener("pointerover", (e) => {
@@ -403,13 +403,13 @@ themeBtn.addEventListener("click", () => {
     // Save theme icon and theme on click theme button.
 const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon";
 const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light": "dark";
-localStorage.setItem("sue-saved-icon", getCurrentIcon());
-localStorage.setItem("sue-saved-theme", getCurrentTheme());
+localStorage.setItem("dr-saved-icon", getCurrentIcon());
+localStorage.setItem("dr-saved-theme", getCurrentTheme());
 });
 
 // Get saved theme icon and theme on document Loaded.
-const savedIcon = localStorage.getItem("sue-saved-icon");
-const savedTheme = localStorage.getItem("sue-saved-theme");
+const savedIcon = localStorage.getItem("dr-saved-icon");
+const savedTheme = localStorage.getItem("dr-saved-theme");
 document.addEventListener("DOMContentLoaded", () => {
     themeBtn.classList[savedIcon === "sun"? "add": "remove"]("active-sun-icon");
     document.body.classList[savedTheme === "light" ? "add": "remove"]("light-theme");
@@ -429,11 +429,11 @@ ScrollReveal().reveal('.avatar-img', { delay: 100, origin: 'top' });
 ScrollReveal().reveal('.avatar-info, .section-title', { delay: 300, origin: 'top' });
 ScrollReveal().reveal('.home-social, .home-scroll-btn, .copy-right', { delay: 600, origin: 'bottom' });
 ScrollReveal().reveal('.about-img', { delay: 700, origin: 'top' });
-ScrollReveal().reveal('.about-info, .sue-footer .sue-logo', { delay: 300, origin: 'bottom' });
-ScrollReveal().reveal('.pro-card, .about-buttons, .sue-main-btn, .resume-tabs .tab-btn, .portfolio-tabs .tab-btn', { delay: 500, origin: 'right', interval: 200 });
+ScrollReveal().reveal('.about-info, .dr-footer .dr-logo', { delay: 300, origin: 'bottom' });
+ScrollReveal().reveal('.pro-card, .about-buttons, .dr-main-btn, .resume-tabs .tab-btn, .portfolio-tabs .tab-btn', { delay: 500, origin: 'right', interval: 200 });
 ScrollReveal().reveal('#resume .section-content', { delay: 700, origin: 'bottom' });
 ScrollReveal().reveal('.service-card, .portfolio-card, .contact-item, .contact-social-links li, .footer-menu .menu-item', { delay: 300, origin: 'bottom', interval: 300 });
-ScrollReveal().reveal('.sue-client-swiper, .contact-form-body', { delay: 700, origin: 'right' });
+ScrollReveal().reveal('.dr-client-swiper, .contact-form-body', { delay: 700, origin: 'right' });
 ScrollReveal().reveal('.contact-info h3', { delay: 100, origin: 'bottom', interval: 300 });
 
 
