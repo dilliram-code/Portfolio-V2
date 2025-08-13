@@ -943,6 +943,7 @@ body {
   font-size: var(--base-font-size);
   font-weight: var(--font-regular);
   line-height: 30px;
+  text-align: justify;
 }
 
 .pro-list {
@@ -1336,7 +1337,6 @@ body {
   padding: 10px;
   overflow-y: auto;
 }
-
 .modal-content::-webkit-scrollbar {
   background: hsl(var(--hue) 25% 20%);
   width: 5px;
@@ -1916,7 +1916,7 @@ body {
 
 .footer-menu .menu-item a {
   color: var(--color-01);
-  font-size: calc(var(--tiny-font-size) 0.07rem);
+  font-size: calc(var(--tiny-font-size) - 0.07rem);
   font-weight: var(--font-medium);
   text-transform: uppercase;
   padding: 3px 12px;
@@ -2485,7 +2485,7 @@ h3.my-profession {
 
 .right-sword {
   clip-path: polygon(0 50%, 90% 0, 100% 50%, 90% 100%, 0 50%);
-  transform: scaleX(-1); 
+  transform: scaleX(-1);
 }
 .dr-logo {
   text-decoration: none;
