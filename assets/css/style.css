@@ -2674,20 +2674,18 @@ h3.my-profession {
 
 
 /* the painted stroke */
-.underline_paint::after {
+/* .underline_paint::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 8px;
-  /* controls vertical position of stroke */
   height: 36%;
   z-index: -1;
-  /* behind the text */
   background: linear-gradient(90deg, #ffd166 0%, #ef476f 40%, #8ac6d1 100%);
   transform: skewX(-12deg);
   filter: blur(6px) saturate(120%);
   opacity: 0.95;
   border-radius: 18px;
   pointer-events: none;
-}
+}   */
