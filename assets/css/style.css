@@ -2673,6 +2673,11 @@ h3.my-profession {
 }
 
 
+.highlight-text {
+  color: rgb(108, 241, 93)
+}
+
+
 /* the painted stroke */
 /* .underline_paint::after {
   content: "";
