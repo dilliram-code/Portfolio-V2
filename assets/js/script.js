@@ -529,6 +529,8 @@ if (audio.muted) {
 
 
 
+// This has to be implemented later. The main target of this idea is to change the picture while I change the theme color. 
+
 // Portfolio image changing logic while changing the theme.
 // const themeButton = document.querySelector(".theme-btn");
 // const avatarImg = document.getElementById("avatar-imgImg");
