@@ -2555,6 +2555,10 @@ h3.my-profession {
   color: rgb(108, 241, 93)
 }
 
+.value-privacy{
+  font-style: italic;
+  margin: 0 auto;
+}
 
 /* the painted stroke */
 /* .underline_paint::after {
