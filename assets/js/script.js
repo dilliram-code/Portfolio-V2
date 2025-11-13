@@ -527,6 +527,19 @@ if (audio.muted) {
 }
 });
 
+// Progress bar
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    const progressBar = document.getElementById('scroll-progress');
+    progressBar.style.width = scrollPercent + '%';
+
+    // Dynamic color animation (optional)
+    const hue = scrollPercent * 3.6; // changes color as you scroll
+    progressBar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
+});
 
 
 // This has to be implemented later. The main target of this idea is to change the picture while I change the theme color. 
