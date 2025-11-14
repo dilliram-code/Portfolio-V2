@@ -541,6 +541,9 @@ window.addEventListener('scroll', () => {
     progressBar.style.backgroundColor = `hsl(${hue}, 80%, 50%)`;
 });
 
+// update the year at the footer automatically
+
+document.getElementById("year").textContent = new Date().getFullYear();
 
 // This has to be implemented later. The main target of this idea is to change the picture while I change the theme color. 
 
