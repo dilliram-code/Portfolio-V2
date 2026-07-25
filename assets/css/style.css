@@ -4,37 +4,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Clicker+Script&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 /*========================= CSS VARIABLES =========================*/
+/*
+  Color theory note: the brand runs on a cool electric-indigo primary
+  (hue 250 — analytical, "deep data") paired with a warm amber accent
+  (hue 38 — near-complementary), used sparingly for "insight" moments:
+  highlights, the name gradient, the logo spark. Everything else
+  derives from these two hues so the page reads as one deliberate
+  palette instead of a grab-bag of unrelated colors.
+*/
 :root {
-  --hue: 181;
-  --sat: 47%;
-  --light: 49%;
+  /* --hue: 250;
+  --sat: 78%;
+  --light: 63%; */
+
+  --hue: 185;
+  --sat: 55%;
+  --light: 55%;
+
+  /* Warm accent — near-complementary to the indigo primary */
+  --accent-hue: 304;
+  --accent-sat: 67.7%;
+  --accent-light: 49.8%;
+  --accent-color: hsl(var(--accent-hue), var(--accent-sat), var(--accent-light));
+  --accent-hover: hsl(var(--accent-hue), var(--accent-sat), calc(var(--accent-light) - 8%));
+  --accent-soft: hsl(var(--accent-hue), var(--accent-sat), var(--accent-light), 0.15);
 
   --primary-color: hsl(var(--hue), var(--sat), var(--light));
   --white-color: hsl(var(--hue), 45%, 98%);
-  --dark-color: hsl(var(--hue), 26%, 12%);
+  --dark-color: hsl(var(--hue), 30%, 11%);
 
   /* Dark/Light Themes */
   --color-01: hsl(var(--hue), var(--sat), var(--light));
   --color-02: hsl(var(--hue), 45%, 98%);
-  --color-03: hsl(var(--hue), 26%, 12%);
-  --color-04: hsl(var(--hue), 0%, 62%);
-  --color-05: hsl(var(--hue), 26%, 12%);
+  --color-03: hsl(var(--hue), 30%, 11%);
+  --color-04: hsl(var(--hue), 12%, 65%);
+  --color-05: hsl(var(--hue), 30%, 11%);
 
-  --body-color: hsl(250, 26%, 12%);
-  --hover-color: hsl(var(--hue), var(--sat), calc(var(--light) - 7%));
+  --body-color: hsl(var(--hue), 80%, 7%);
+  --hover-color: hsl(var(--hue), var(--sat), calc(var(--light) - 9%));
 
   /* Background Colors */
-  --bottom-nav-bg: hsl(var(--hue), 32%, 25%, 0.65);
-  --card-bg: linear-gradient(120deg,
-      hsl(var(--hue), 54%, 74%, 0.15),
-      hsl(var(--hue), 54%, 74%, 0.05));
-  --modal-backdrop-bg: hsl(var(--hue), 54%, 74%, 0.1);
-  --footer-bg: linear-gradient(360deg,
-      hsl(var(--hue), 54%, 74%, 0.15),
-      hsl(var(--hue), 54%, 74%, 0.1));
-  --scrollbar-color: hsl(var(--hue), 25%, 20%);
+  --bottom-nav-bg: hsl(var(--hue), 35%, 14%, 0.6);
+  --card-bg: linear-gradient(135deg,
+      hsl(var(--hue), 60%, 65%, 0.14),
+      hsl(var(--accent-hue), 60%, 60%, 0.05));
+  --modal-backdrop-bg: hsl(var(--hue), 45%, 6%, 0.65);
+  --footer-bg: linear-gradient(180deg,
+      hsl(var(--hue), 45%, 16%, 0.35),
+      hsl(var(--hue), 45%, 10%, 0.15));
+  --scrollbar-color: hsl(var(--hue), 25%, 14%);
   --scrollbar-thumb: hsl(var(--hue), var(--sat), var(--light));
   --scrollbar-thumb-hover: hsl(var(--hue), var(--sat), calc(var(--light) - 7%));
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 0.25s var(--ease);
+  --t-base: 0.4s var(--ease);
+  --t-slow: 0.6s var(--ease);
+  --glow: 0 10px 30px -8px hsl(var(--hue) var(--sat) var(--light) / 0.45);
+  --glow-accent: 0 10px 26px -6px hsl(var(--accent-hue) var(--accent-sat) var(--accent-light) / 0.5);
 
   /* Fonts */
   --body-font-family: "Inter", sans-serif;
@@ -75,21 +104,21 @@
 /* ========================LIGHT THEME================ */
 /* ========== Changeable colors for dark/Light themes ======== */
 .light-theme {
-  --color-01: hsl(var(--hue) 26% 12%);
+  --color-01: hsl(var(--hue) 30% 14%);
   /* primary to dark */
-  --color-02: hsl(var(--hue) 26% 12%);
+  --color-02: hsl(var(--hue) 30% 14%);
   /* white to dark */
   --color-03: hsl(var(--hue) 45% 98%);
   /* dark to white */
-  --color-04: hsl(var(--hue) 9% 46%);
+  --color-04: hsl(var(--hue) 9% 40%);
   /* Light-graygray to dark-gray */
   --color-05: hsl(var(--hue) var(--sat) var(--light));
   /* dark to primary */
-  --body-color: hsl(var(--hue) 45% 98%);
+  --body-color: hsl(var(--hue) 45% 97%);
   /* dark to white */
 
   /* =============Background colors ======= */
-  --bottom-nav-bg: hsl(var(--hue) 32% 85% / 0.8);
+  --bottom-nav-bg: hsl(var(--hue) 45% 92% / 0.8);
   --card-bg: hsl(0 0% 100%);
   --modal-backdrop-bg: hsl(var(--hue) 50% 12% / 0.5);
   --footer-bg: linear-gradient(360deg,
@@ -108,12 +137,12 @@
   .service-card,
   .portfolio-card,
   .contact-form-body {
-    box-shadow: 0 2px 8px hsl(0, 0%, 1%, 0.05);
+    box-shadow: 0 2px 8px hsl(var(--hue) 30% 20% / 0.08);
   }
 
   .contact-icon,
   .contact-social-links li {
-    box-shadow: 0 2px 4px hsl(0, 0%, 1%, 0.3);
+    box-shadow: 0 2px 4px hsl(var(--hue) 30% 20% / 0.15);
   }
 
   .dr-footer.copy-right {
@@ -133,25 +162,25 @@
   }
 
   .bubble {
-    background: teal;
+    background: hsl(var(--hue) 70% 55% / 0.35);
   }
 
   .contact-form-body {
-    box-shadow: 0 2px 4px hsl(0, 0%, 1%, 0.3);
+    box-shadow: 0 2px 12px hsl(var(--hue) 30% 20% / 0.12);
   }
 
   .contact-form-body form .input-group input,
   .contact-form-body form .input-group textarea {
-    color: hsl(0, 0%, 1%, 0.6);
+    color: hsl(var(--hue) 30% 15%);
   }
 
   .floating-quote {
-    color: teal;
+    color: var(--primary-color);
     font-weight: 500;
   }
 
-  .highlight-text{
-    color:#de61d4;
+  .highlight-text {
+    color: var(--accent-hover);
   }
 }
 
@@ -164,14 +193,14 @@
 }
 
 ::selection {
-  background-color: #ff1493;
-  color: white;
+  background-color: var(--accent-color);
+  color: hsl(var(--hue) 30% 11%);
   /* optional: text color during selection */
 }
 
 ::-moz-selection {
-  background-color: #ff1493;
-  color: white;
+  background-color: var(--accent-color);
+  color: hsl(var(--hue) 30% 11%);
 }
 
 ul,
@@ -183,6 +212,17 @@ a {
   color: var(--color-04);
   text-decoration: none;
   cursor: pointer;
+  transition: color var(--t-fast);
+}
+
+/* Visible, on-brand keyboard focus (accessibility + polish) */
+a:focus-visible,
+button:focus-visible,
+.tab-btn:focus-visible,
+.dr-main-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 /* ==============Page scroll bar============= */
@@ -203,12 +243,13 @@ a {
 /*========================= BASE STYLES =========================*/
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   color: var(--color-04);
   background: var(--body-color);
-  transition: background 0.3s, color 0.3s;
+  transition: background var(--t-base), color var(--t-base);
 }
 
 /* ====================== Reusable Styles ==================== */
@@ -318,13 +359,13 @@ body {
 .to-top-btn {
   z-index: var(--z-fixed);
   position: fixed;
-  background: hsl (var(--hue) 54% 74% / 0.2);
+  background: hsl(var(--hue) 54% 74% / 0.2);
   height: 100px;
   width: 2px;
   bottom: 25px;
   right: -30px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--t-base);
 }
 
 .to-top-btn.active {
@@ -333,7 +374,7 @@ body {
 
 .to-top-btn a {
   color: var(--color-01);
-  transition: 0.3s;
+  transition: color var(--t-fast);
 }
 
 .to-top-btn a:hover {
@@ -362,24 +403,49 @@ body {
 
 /* ======================= BUTTONS ============================ */
 .dr-main-btn {
+  position: relative;
   width: fit-content;
   padding: 14px 30px;
   border-radius: 35px;
   cursor: pointer;
-  transition: 0.3s;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+}
+
+/* Animated fill that sweeps in from the left on hover, instead of an
+   instant color-swap — reads as a deliberate, tactile interaction. */
+.dr-main-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--hover-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-base);
 }
 
 .dr-main-btn:hover {
-  color: var(--white-color);
-  background: var(--hover-color);
   border: 2px solid var(--hover-color);
+  transform: translateY(-3px);
+  box-shadow: var(--glow);
+}
+
+.dr-main-btn:hover::before {
+  transform: scaleX(1);
+}
+
+.dr-main-btn:active {
+  transform: translateY(-1px) scale(0.97);
+  box-shadow: none;
 }
 
 .dr-main-btn a {
   color: var(--color-01);
   font-size: var(--small-font-size);
   font-weight: 500;
-  transition: 0.3s;
+  transition: color var(--t-fast);
 }
 
 .dr-main-btn:hover a {
@@ -391,8 +457,16 @@ body {
 }
 
 .fill-btn {
-  background: var (--primary-color);
+  background: var(--primary-color);
   border: 2px solid var(--primary-color);
+}
+
+/* --color-01 and --primary-color resolve to the exact same hsl() value
+   in dark mode, so a .fill-btn (solid --primary-color background) with
+   the default .dr-main-btn a color made the label invisible until hover.
+   Force fill-btn text to the contrast color at all times, in both themes. */
+.fill-btn a {
+  color: var(--white-color);
 }
 
 /* =======================HEADER====================== */
@@ -403,12 +477,14 @@ body {
   top: 0;
   left: 0;
   padding: 30px 0;
-  transition: 0.3s ease;
+  transition: padding var(--t-base), background var(--t-base), box-shadow var(--t-base);
 }
 
 .dr-header.shrink {
-  background: var(--body-color);
+  background: var(--bottom-nav-bg);
+  backdrop-filter: blur(14px);
   padding: 12px 0;
+  box-shadow: 0 4px 30px hsl(var(--hue) 60% 3% / 0.35);
 }
 
 .dr-header .inner {
@@ -423,11 +499,13 @@ body {
   font-size: 2.6rem;
   font-weight: var(--font-semi-bold);
   letter-spacing: -3px;
-  transition: 0.3s;
+  display: inline-block;
+  transition: color var(--t-fast), transform var(--t-fast);
 }
 
 .dr-logo a:hover {
   color: var(--hover-color);
+  transform: scale(1.05);
 }
 
 .header-btns {
@@ -441,12 +519,13 @@ body {
   color: var(--color-01);
   font-size: 1.8rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast), transform var(--t-fast);
   display: none;
 }
 
 .lets-talk-icon:hover {
   color: var(--hover-color);
+  transform: scale(1.15);
 }
 
 /* ================== Floating mute button ================= */
@@ -454,7 +533,7 @@ body {
   color: var(--color-01);
   font-size: 1.7rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast), transform var(--t-fast);
   background: transparent;
   border: none;
   outline: none;
@@ -465,6 +544,11 @@ body {
 
 #mute-btn:hover {
   color: var(--hover-color);
+  transform: scale(1.15);
+}
+
+#mute-btn:active {
+  transform: scale(0.9);
 }
 
 /* =================Floating Button ends ====================== */
@@ -484,29 +568,29 @@ body {
   color: var(--color-01);
   font-size: 1.7rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast), transform var(--t-base), opacity var(--t-base);
 }
 
 .theme-btn:hover i {
   color: var(--hover-color);
-  transform: rotate(-15deg);
+  transform: rotate(-25deg) scale(1.1);
 }
 
 /* Default state (dark theme) - show moon, hide sun */
 .theme-btn .moon-icon {
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity var(--t-base);
 }
 
 .theme-btn .sun-icon {
   opacity: 1;
-  transition: 0.3s;
+  transition: opacity var(--t-base);
 }
 
 /* When light theme is active - show sun, hide moon */
 .theme-btn.active-sun-icon .sun-icon {
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity var(--t-base);
 }
 
 .theme-btn.active-sun-icon .moon-icon {
@@ -526,15 +610,13 @@ body {
   /* bottom: 50px; */
   bottom: -75px;
   opacity: 0;
-  transition: 0.5s ease, 0.3s ease;
-  transition-property: bottom, opacity;
+  transition: bottom var(--t-slow), opacity var(--t-base);
 }
 
 .bottom-nav.active {
   bottom: 50px;
   opacity: 1;
-  transition: 0.5s ease, 0.3 ease;
-  transition-property: bottom, opacity;
+  transition: bottom var(--t-slow), opacity var(--t-base);
 }
 
 .bottom-nav-inner {
@@ -551,15 +633,16 @@ body {
 
 .bottom-nav .menu {
   background: var(--bottom-nav-bg);
-  backdrop-filter: blur (10px);
+  backdrop-filter: blur(14px);
   padding: 16px 35px;
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 25px;
-  border-bottom: 1px solid hsl (var(--hue) 45% 98% / 0.1);
-  border-left: 1px solid hsl (var(--hue) 45% 98% / 0.1);
+  border-bottom: 1px solid hsl(var(--hue) 45% 98% / 0.1);
+  border-left: 1px solid hsl(var(--hue) 45% 98% / 0.1);
   border-radius: 50px;
+  box-shadow: 0 8px 30px hsl(var(--hue) 60% 3% / 0.35);
   /* display: none; */
 }
 
@@ -575,17 +658,19 @@ body {
   font-size: 1.4rem;
   padding: 10px;
   border-radius: 50%;
-  transition: 0.3s;
+  transition: color var(--t-fast), background var(--t-fast), transform var(--t-fast);
 }
 
 .bottom-nav .menu li:hover a i {
   color: var(--white-color);
   background: var(--hover-color);
+  transform: translateY(-4px);
 }
 
 .bottom-nav .menu .current i {
   color: var(--dark-color);
   background: var(--primary-color);
+  box-shadow: var(--glow);
 }
 
 .bottom-nav .menu li a span {
@@ -596,14 +681,16 @@ body {
   font-size: var(--tiny-font-size);
   font-weight: var(--font-medium);
   padding: 3px 10px;
-  transform: translateY(-53px);
+  transform: translateY(-45px);
   border-radius: 5px;
   pointer-events: none;
   opacity: 0;
+  transition: transform var(--t-fast), opacity var(--t-fast);
 }
 
 .bottom-nav .menu li:hover a span {
   opacity: 1;
+  transform: translateY(-53px);
 }
 
 .bottom-nav .menu li a span:before {
@@ -629,7 +716,7 @@ body {
   padding: 2px;
   border-radius: 50%;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform var(--t-base), color var(--t-fast), background var(--t-fast), opacity var(--t-fast);
   pointer-events: none;
   opacity: 0;
 }
@@ -642,17 +729,18 @@ body {
 .bottom-nav .menu-hide-btn:hover {
   color: var(--white-color);
   background: var(--hover-color);
+  transform: rotate(-180deg);
 }
 
 .menu-show-btn {
   z-index: var(--z-fixed);
   position: fixed;
   background: var(--bottom-nav-bg);
-  backdrop-filter: blur (10px);
+  backdrop-filter: blur(14px);
   width: 85px;
   height: 50px;
-  border-bottom: 1px solid hsl (var(--hue) 45% 98% / 0.1);
-  border-left: 1px solid hsl (var(--hue) 45% 98% / 0.1);
+  border-bottom: 1px solid hsl(var(--hue) 45% 98% / 0.1);
+  border-left: 1px solid hsl(var(--hue) 45% 98% / 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -663,20 +751,22 @@ body {
   /* bottom: 50px; */
   bottom: -75px;
   opacity: 0;
-  border-radius: 5px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: 0.5s ease, 0.3s ease;
-  transition-property: bottom, opacity;
+  transition: bottom var(--t-slow), opacity var(--t-base), box-shadow var(--t-fast);
   overflow: hidden;
   animation: wiggle 2s linear infinite;
   animation-delay: 1s;
 }
 
+.menu-show-btn:hover {
+  box-shadow: var(--glow);
+}
+
 .menu-show-btn.active {
   bottom: 50px;
   opacity: 1;
-  transition: 0.5s ease, 0.3s ease;
-  transition-property: bottom, opacity;
+  transition: bottom var(--t-slow), opacity var(--t-base);
 }
 
 @keyframes wiggle {
@@ -717,12 +807,14 @@ body {
   background: var(--primary-color);
   width: 40px;
   height: 4px;
-  transition: 0.15s;
+  border-radius: 2px;
+  transition: background var(--t-fast), width var(--t-fast);
 }
 
 .menu-show-btn:hover .bar-01,
 .menu-show-btn:hover .bar-02 {
   background: var(--hover-color);
+  width: 30px;
 }
 
 /* ======================== HOME ====================== */
@@ -749,16 +841,43 @@ body {
   width: 400px;
   height: 400px;
   margin-bottom: 190px;
+  border-radius: 24px;
+  transition: box-shadow var(--t-slow);
 }
+
+/* Animation aroud avatar image */
+
+/* .avatar-img::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 30px;
+  background: conic-gradient(from 0deg,
+      var(--primary-color),
+      var(--accent-color),
+      var(--primary-color));
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(20px);
+  animation: spin-glow 6s linear infinite;
+}
+
+@keyframes spin-glow {
+  to {
+    transform: rotate(360deg);
+  }
+} */
 
 .avatar-img img {
   position: absolute;
   width: 100%;
-  transition: filter 0.5s ease;
+  border-radius: 24px;
+  transition: filter var(--t-slow), transform var(--t-slow);
 }
 
 .avatar-img img:hover {
-  filter: brightness(1.2);
+  filter: brightness(1.12) saturate(1.1);
+  transform: scale(1.02);
 }
 
 .home-social {
@@ -799,11 +918,13 @@ body {
 .home-social .social-icons li a {
   color: var(--color-01);
   font-size: var(--xlarge-font-size);
-  transition: 0.3s;
+  display: inline-block;
+  transition: color var(--t-fast), transform var(--t-fast);
 }
 
 .home-social .social-icons li a:hover {
   color: var(--hover-color);
+  transform: translateY(-4px) scale(1.1);
 }
 
 .avatar-container .hire-btn-01 {
@@ -866,6 +987,10 @@ body {
   color: var(--hover-color);
 }
 
+.home-scroll-btn {
+  transition: color var(--t-fast);
+}
+
 .home-scroll-btn div {
   font-size: var(--tiny-font-size);
   font-weight: var(--font-regular);
@@ -888,12 +1013,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: var(--glow);
 }
 
 .about-img img {
   width: 100%;
   border-radius: 15px;
+  transition: transform var(--t-slow);
+}
+
+.about-img:hover img {
+  transform: scale(1.08);
 }
 
 .about-details {
@@ -929,13 +1061,22 @@ body {
 
 .pro-card {
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 10px;
   padding: 35px 25px;
   text-align: left;
-  border-radius: 5px;
+  border-radius: 14px;
+  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+}
+
+.pro-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
+  border-color: hsl(var(--hue) var(--sat) var(--light) / 0.4);
 }
 
 .pro-card span {
@@ -981,11 +1122,12 @@ body {
   padding: 12px 0;
   border-radius: 25px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast), background var(--t-base), padding var(--t-base), transform var(--t-fast);
 }
 
 .resume-tabs .tab-btn:hover {
   color: var(--hover-color);
+  transform: translateY(-2px);
 }
 
 .resume-tabs .tab-btn i {
@@ -997,6 +1139,7 @@ body {
   color: var(--dark-color);
   background: var(--primary-color);
   padding: 12px 15px;
+  box-shadow: var(--glow);
 }
 
 .resume-tabs .tab-btn.active:hover {
@@ -1012,7 +1155,7 @@ body {
   margin-bottom: 25px;
   display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--t-base);
 }
 
 .resume-tab-content.active {
@@ -1049,6 +1192,13 @@ body {
   width: 15px;
   height: 15px;
   border-radius: 50%;
+  box-shadow: 0 0 0 4px hsl(var(--hue) var(--sat) var(--light) / 0.18);
+  transition: box-shadow var(--t-base), transform var(--t-base);
+}
+
+.resume-items .item:hover:before {
+  box-shadow: 0 0 0 8px hsl(var(--hue) var(--sat) var(--light) / 0.22);
+  transform: scale(1.15);
 }
 
 .resume-items .item .info {
@@ -1057,6 +1207,15 @@ body {
   display: flex;
   align-items: center;
   column-gap: 25px;
+  transition: transform var(--t-base);
+}
+
+.resume-items .item:hover .info {
+  transform: translateX(6px);
+}
+
+.resume-items .item-left:hover .info {
+  transform: translateX(-6px);
 }
 
 .resume-items .item-left .info {
@@ -1119,13 +1278,22 @@ body {
 .skill-card {
   position: relative;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 50px 25px;
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
   border-bottom: 5px solid var(--primary-color);
-  border-radius: 10px;
+  border-radius: 18px;
+  transition: transform var(--t-base), box-shadow var(--t-base), border-bottom-color var(--t-base);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glow);
+  border-bottom-color: var(--accent-color);
 }
 
 .skill-title {
@@ -1158,6 +1326,11 @@ body {
 .skill {
   display: flex;
   column-gap: 15px;
+  transition: transform var(--t-fast);
+}
+
+.skill:hover {
+  transform: translateX(5px);
 }
 
 .skill-info {
@@ -1169,6 +1342,11 @@ body {
 .skill i {
   color: var(--primary-color);
   font-size: 1.35rem;
+  transition: color var(--t-fast);
+}
+
+.skill:hover i {
+  color: var(--accent-color);
 }
 
 .skill-info h5 {
@@ -1199,6 +1377,7 @@ body {
 .service-card {
   position: relative;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
   width: 275px;
   height: 285px;
   display: flex;
@@ -1206,15 +1385,29 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 50px;
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
   border-bottom: 5px solid var(--primary-color);
-  border-radius: 10px;
+  border-radius: 18px;
   cursor: pointer;
   overflow: hidden;
+  transition: transform var(--t-base), box-shadow var(--t-base), border-bottom-color var(--t-base);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glow);
+  border-bottom-color: var(--accent-color);
 }
 
 .service-icon {
   color: var(--primary-color);
   font-size: 4.15rem;
+  transition: color var(--t-base), transform var(--t-base);
+}
+
+.service-card:hover .service-icon {
+  color: var(--accent-color);
+  transform: scale(1.12) rotate(-6deg);
 }
 
 .service-info h4 {
@@ -1231,7 +1424,7 @@ body {
   font-size: var(--base-font-size);
   color: var(--color-01);
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast);
 }
 
 .service-see-more:hover {
@@ -1251,7 +1444,7 @@ body {
   z-index: var(--z-overlay);
   position: fixed;
   background: var(--modal-backdrop-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
   top: 0;
   left: 0;
   width: 100%;
@@ -1262,12 +1455,12 @@ body {
   overflow-y: auto;
   display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--t-base);
 }
 
 .service-modal-backdrop.active {
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--t-slow);
 }
 
 .service-modal {
@@ -1277,18 +1470,19 @@ body {
   height: fit-content;
   margin: 75px 25px;
   padding: 50px 25px 50px 45px;
-  border-radius: 15px;
+  border-radius: 20px;
   border-bottom: 5px solid var(--primary-color);
+  box-shadow: 0 25px 60px hsl(var(--hue) 60% 3% / 0.5);
   overflow: hidden;
-  transform: scale(0);
+  transform: scale(0.85) translateY(20px);
   opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform var(--t-slow) var(--ease-spring), opacity var(--t-base);
 }
 
 .service-modal.active {
-  transform: scale(1);
+  transform: scale(1) translateY(0);
   opacity: 1;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform var(--t-slow) var(--ease-spring), opacity var(--t-base);
 }
 
 .modal-close-btn {
@@ -1299,11 +1493,12 @@ body {
   right: 0;
   margin: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast), transform var(--t-fast);
 }
 
 .modal-close-btn:hover {
   color: var(--hover-color);
+  transform: rotate(90deg);
 }
 
 .service-modal .modal-content {
@@ -1395,17 +1590,19 @@ body {
   padding: 12px 0;
   border-radius: 25px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: color var(--t-fast), background var(--t-base), padding var(--t-base), transform var(--t-fast);
 }
 
 .portfolio-tabs .tab-btn:hover {
   color: var(--hover-color);
+  transform: translateY(-2px);
 }
 
 .portfolio-tabs .tab-btn.active {
   color: var(--dark-color);
   background: var(--primary-color);
   padding: 12px 25px;
+  box-shadow: var(--glow);
 }
 
 .portfolio-tabs .tab-btn.active:hover {
@@ -1432,18 +1629,32 @@ body {
 .portfolio-card {
   position: relative;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
   width: 350px;
-  border-radius: 10px;
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
+  border-radius: 16px;
   cursor: pointer;
   overflow: hidden;
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glow);
 }
 
 .portfolio-card .card-img {
   width: 100%;
+  overflow: hidden;
 }
 
 .portfolio-card .card-img img {
   width: 100%;
+  transition: transform var(--t-slow);
+}
+
+.portfolio-card:hover .card-img img {
+  transform: scale(1.1);
 }
 
 .portfolio-card .card-info {
@@ -1473,18 +1684,19 @@ body {
   font-size: 1.7rem;
   margin: 15px;
   transform: scale(0);
-  transition: 0.3s;
+  transition: transform var(--t-base), color var(--t-base);
 }
 
 .portfolio-card:hover .card-info i {
   transform: scale(1);
+  color: var(--accent-color);
 }
 
 .portfolio-modal-backdrop {
   z-index: var(--z-overlay);
   position: fixed;
   background: var(--modal-backdrop-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
   top: 0;
   left: 0;
   width: 100%;
@@ -1494,16 +1706,16 @@ body {
   overflow-y: auto;
   display: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--t-base);
 }
 
 .portfolio-modal-backdrop.active {
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--t-slow);
 }
 
 .portfolio-modal-backdrop::-webkit-scrollbar {
-  background: hsl (var(--hue) 25% 20%);
+  background: hsl(var(--hue) 25% 20%);
   width: 8px;
   border-radius: 5px;
 }
@@ -1524,16 +1736,17 @@ body {
   height: fit-content;
   margin: 60px 25px;
   padding: 30px 45px;
-  border-radius: 15px;
-  transform: scale(0);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px hsl(var(--hue) 60% 3% / 0.5);
+  transform: scale(0.85) translateY(20px);
   opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform var(--t-slow) var(--ease-spring), opacity var(--t-base);
 }
 
 .portfolio-modal.active {
-  transform: scale(1);
+  transform: scale(1) translateY(0);
   opacity: 1;
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform var(--t-slow) var(--ease-spring), opacity var(--t-base);
 }
 
 .portfolio-modal .modal-content {
@@ -1623,21 +1836,30 @@ body {
 .swiper-button-prev i {
   color: var(--primary-color);
   font-size: 4.5rem;
-  transition: 0.3s ease;
+  transition: color var(--t-fast), transform var(--t-fast);
 }
 
-.swiper-button-next i:hover,
-.swiper-button-prev i:hover {
-  color: var(--hover-color);
+.swiper-button-next:hover i,
+.swiper-button-prev:hover i {
+  color: var(--accent-color);
+  transform: scale(1.15);
 }
 
 .swiper-pagination-bullet,
 .swiper-pagination-bullet-active {
   background: var(--primary-color);
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-color);
+  transform: scale(1.3);
 }
 
 .swiper-slide .client-img {
   width: 200px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .swiper-slide .client-img img {
@@ -1645,6 +1867,11 @@ body {
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
+  transition: transform var(--t-slow);
+}
+
+.swiper-slide .client-img:hover img {
+  transform: scale(1.08);
 }
 
 /* ========================Contact Me======================== */
@@ -1681,12 +1908,21 @@ body {
   color: var(--primary-color);
   font-size: 2rem;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
   width: 75px;
   height: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 16px;
+  transition: transform var(--t-base), box-shadow var(--t-base), color var(--t-base);
+}
+
+.contact-item:hover .contact-icon {
+  transform: translateY(-4px) rotate(-6deg);
+  box-shadow: var(--glow);
+  color: var(--accent-color);
 }
 
 .contact-method {
@@ -1708,11 +1944,15 @@ body {
 
 .contact-method a {
   color: var(--primary-color);
-  transition: 0.3s;
+  transition: color var(--t-fast);
 }
 
 .contact-method a:hover {
-  color: var(--hover-color);
+  color: var(--accent-color);
+}
+
+.contact-method a:hover i {
+  transform: translate(2px, -2px);
 }
 
 .contact-method a span {
@@ -1722,6 +1962,8 @@ body {
 
 .contact-method a i {
   font-size: var(--medium-font-size);
+  display: inline-block;
+  transition: transform var(--t-fast);
 }
 
 .contact-social-links {
@@ -1733,6 +1975,8 @@ body {
 .contact-social-links li {
   font-size: 1.75rem;
   background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
   width: 80px;
   height: 80px;
   display: flex;
@@ -1740,23 +1984,37 @@ body {
   align-items: center;
   border-radius: 50%;
   cursor: pointer;
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.contact-social-links li:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
 }
 
 .contact-social-links li a {
   color: var(--primary-color);
-  transition: 0.3s;
+  transition: color var(--t-fast);
 }
 
 .contact-social-links li:hover a {
-  color: var(--hover-color);
+  color: var(--accent-color);
 }
 
 .contact-form-body {
   position: relative;
   background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--hue) 60% 70% / 0.12);
   width: 100%;
   padding: 50px;
-  border-radius: 35px;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px hsl(var(--hue) 60% 3% / 0.25);
+  transition: box-shadow var(--t-base);
+}
+
+.contact-form-body:hover {
+  box-shadow: var(--glow);
 }
 
 .contact-form-body h2 {
@@ -1788,11 +2046,19 @@ body {
   font-size: var(--small-font-size);
   background: hsl(var(--hue) 54% 74% / 0.1);
   width: 100%;
-  border: none;
+  border: 1px solid transparent;
   outline: none;
   padding: 17px 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   color: white;
+  transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.contact-form-body form .input-group input:focus,
+.contact-form-body form .input-group textarea:focus {
+  background: hsl(var(--hue) 54% 74% / 0.16);
+  border-color: hsl(var(--hue) var(--sat) var(--light) / 0.6);
+  box-shadow: 0 0 0 4px hsl(var(--hue) var(--sat) var(--light) / 0.15);
 }
 
 .contact-form-body form .input-group textarea {
@@ -1814,7 +2080,7 @@ body {
   width: 150px;
   padding: 10px 10px;
   margin-top: 10px;
-  transition: 0.35;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
 }
 
 .contact-form-alert {
@@ -1863,12 +2129,14 @@ body {
   text-transform: uppercase;
   padding: 3px 12px;
   border-radius: 15px;
-  transition: 0.3s;
+  display: inline-block;
+  transition: color var(--t-fast), background var(--t-fast), transform var(--t-fast);
 }
 
 .footer-menu .menu-item a:hover {
   color: var(--color-03);
   background: var(--color-01);
+  transform: translateY(-3px);
 }
 
 .dr-footer .copy-right {
@@ -1877,9 +2145,12 @@ body {
   margin-top: 10px;
 }
 
+.dr-footer .copy-right a {
+  transition: color var(--t-fast);
+}
+
 .dr-footer .copy-right a:hover {
   color: var(--color-01);
-  transition: 0.3s;
 }
 
 /* =======================Media Queries ================= */
@@ -2139,7 +2410,7 @@ body {
 
   .contact-form-body {
     padding: 35px;
-    border-radius: 10px;
+    border-radius: 20px;
   }
 
   .footer-menu {
@@ -2419,7 +2690,7 @@ body {
 .bubble {
   position: absolute;
   bottom: -100px;
-  background: rgba(188, 211, 220, 0.46);
+  background: hsl(var(--hue) 70% 70% / 0.35);
   border-radius: 50%;
   opacity: 0.6;
   animation: floatUp linear infinite;
@@ -2441,7 +2712,7 @@ h3.my-profession {
 }
 
 .typing {
-  color: dodgerblue;
+  color: var(--accent-color);
 }
 
 /* ===================Auto Typing Ends here ================ */
@@ -2468,7 +2739,9 @@ h3.my-profession {
 }
 
 /* ======================Gradient for my name ===================== */
-
+/* Duotone brand gradient (indigo -> amber -> indigo) replaces the
+   previous 5-color rainbow so the signature name reads as one
+   deliberate accent rather than a clashing spectrum. */
 @keyframes rainbowGradient {
   0% {
     background-position: 0% 50%;
@@ -2485,15 +2758,13 @@ h3.my-profession {
 
 .my-name {
   background: linear-gradient(270deg,
-      #ff3c78,
-      #ffcc00,
-      #00f0ff,
-      #7264e9ff,
-      #7c00ff);
-  background-size: 1000% 1000%;
+      var(--primary-color),
+      var(--accent-color),
+      var(--primary-color));
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rainbowGradient 8s ease infinite;
+  animation: rainbowGradient 10s ease infinite;
   text-align: center;
 }
 
@@ -2506,20 +2777,20 @@ h3.my-profession {
   font-family: "Segoe UI", sans-serif;
 }
 
+/* "Spark" accents flanking the logo — recolored from generic fire
+   red/orange/yellow to the brand's indigo/amber duotone so they feel
+   like part of the same identity instead of a decoration bolted on. */
 .sword {
   width: 50px;
   height: 10px;
   position: relative;
   background: linear-gradient(120deg,
-      #ff0000,
-      #ffa500,
-      #ffff00,
-      #ffa500,
-      #ff0000);
+      var(--primary-color),
+      var(--accent-color),
+      var(--primary-color));
   background-size: 300% 300%;
-  animation: fireWave 2s ease-in-out infinite;
-  box-shadow: 0 0 10px #ff4500, 0 0 20px #ff8c00, 0 0 30px #ffd700,
-    0 0 40px #ff0000;
+  animation: fireWave 3s ease-in-out infinite;
+  box-shadow: var(--glow), var(--glow-accent);
 }
 
 .left-sword {
@@ -2552,15 +2823,17 @@ h3.my-profession {
 
 
 .highlight-text {
-  color: rgb(108, 241, 93)
+  color: var(--accent-color);
+  transition: color var(--t-fast);
 }
 
-.value-privacy{
+.value-privacy {
   font-style: italic;
   margin: 0 auto;
 }
 
-/* Scroll Progress Bar */
+/* Scroll Progress Bar — brand gradient with a soft glow instead of a
+   neon cyan/magenta/yellow bar unrelated to the rest of the palette */
 #scroll-progress {
   position: fixed;
   top: 0;
@@ -2568,24 +2841,32 @@ h3.my-profession {
   width: 0%;
   height: 6px;
   /* medium thickness */
-  background: linear-gradient(90deg, rgb(0, 255, 255), rgb(255, 0, 255), rgb(255, 255, 0));
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  box-shadow: 0 0 12px hsl(var(--hue) var(--sat) var(--light) / 0.6);
   border-radius: 3px;
   z-index: 9999;
   transition: width 0.2s ease, background 0.4s ease;
 }
-/* the painted stroke */
-/* .underline_paint::after {
+
+/* Underline-paint accent behind highlighted section-title words —
+   a hand-painted marker stroke in the same duotone as the rest of
+   the brand, giving each section heading a distinctive signature. */
+.underline_paint {
+  position: relative;
+  display: inline-block;
+}
+
+.underline_paint::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 8px;
-  height: 36%;
+  left: -4px;
+  right: -4px;
+  bottom: 2px;
+  height: 28%;
   z-index: -1;
-  background: linear-gradient(90deg, #ffd166 0%, #ef476f 40%, #8ac6d1 100%);
-  transform: skewX(-12deg);
-  filter: blur(6px) saturate(120%);
-  opacity: 0.95;
-  border-radius: 18px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: skewX(-10deg);
+  opacity: 0.22;
+  border-radius: 8px;
   pointer-events: none;
-}   */
+}
