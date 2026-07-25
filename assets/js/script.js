@@ -1,32 +1,32 @@
 var typed = new Typed(".typing", {
-  strings: ["","a research scholar", "an AI enthusiast", "a fitness freak", "a science geek"],
-  typeSpeed: 50,
-  backSpeed: 60,
-  loop:true
+    strings: ["", "an ai scholar", "an ", "a fitness freak", "a science geek"],
+    typeSpeed: 50,
+    backSpeed: 60,
+    loop: true
 })
 
 
 const resumeTabs = document.querySelector(".resume-tabs");
 const resumePortfolioTabBtns = resumeTabs.querySelectorAll(".tab-btn");
 const resumeTabContents = document.querySelectorAll(".resume-tab-content");
-var resumeTabNav = function (resumeTabClick){
+var resumeTabNav = function (resumeTabClick) {
     resumeTabContents.forEach((resumeTabContent) => {
-    resumeTabContent.style.display = "none";
-    resumeTabContent.classList.remove("active");
-});
-    resumePortfolioTabBtns.forEach((resumePortfolioTabBtn) =>{
-    resumePortfolioTabBtn.classList.remove("active");
-});
+        resumeTabContent.style.display = "none";
+        resumeTabContent.classList.remove("active");
+    });
+    resumePortfolioTabBtns.forEach((resumePortfolioTabBtn) => {
+        resumePortfolioTabBtn.classList.remove("active");
+    });
 
-    resumeTabContents [resumeTabClick].style.display = "flex";
+    resumeTabContents[resumeTabClick].style.display = "flex";
     setTimeout(() => {
-    resumeTabContents [resumeTabClick].classList.add("active");
+        resumeTabContents[resumeTabClick].classList.add("active");
     }, 100);
-    resumePortfolioTabBtns [resumeTabClick].classList.add("active");
+    resumePortfolioTabBtns[resumeTabClick].classList.add("active");
 }
 resumePortfolioTabBtns.forEach((resumePortfolioTabBtn, i) => {
     resumePortfolioTabBtn.addEventListener("click", () => {
-    resumeTabNav(i);
+        resumeTabNav(i);
     });
 });
 
@@ -40,23 +40,23 @@ serviceCardWithModals.forEach((serviceCardWithModal) => {
     const serviceBackDrop = serviceCardWithModal.querySelector(".service-modal-backdrop");
     const serviceModal = serviceCardWithModal.querySelector(".service-modal");
     const modalCloseBtn = serviceCardWithModal.querySelector(".modal-close-btn");
-serviceCard.addEventListener("click", () => {
-    serviceBackDrop.style.display = "flex";
-setTimeout(() => {
-                serviceBackDrop.classList.add("active");
-                }, 100);
+    serviceCard.addEventListener("click", () => {
+        serviceBackDrop.style.display = "flex";
+        setTimeout(() => {
+            serviceBackDrop.classList.add("active");
+        }, 100);
 
-setTimeout(() => {
+        setTimeout(() => {
             serviceModal.classList.add("active");
         }, 300);
     });
-modalCloseBtn.addEventListener("click", () => {
-setTimeout(() => {
-                serviceBackDrop.style.display = "none";
+    modalCloseBtn.addEventListener("click", () => {
+        setTimeout(() => {
+            serviceBackDrop.style.display = "none";
         }, 500);
-setTimeout(() => {
-                serviceBackDrop.classList.remove("active");
-                serviceModal.classList.remove("active");
+        setTimeout(() => {
+            serviceBackDrop.classList.remove("active");
+            serviceModal.classList.remove("active");
         }, 100);
     });
 
@@ -70,28 +70,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const portfolioTabs = document.querySelector(".portfolio-tabs");
     const portfolioTabBtns = portfolioTabs.querySelectorAll(".tab-btn");
     const cardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
-portfolioTabBtns.forEach((tabBtn) => {
-    tabBtn.addEventListener("click", () => {
+    portfolioTabBtns.forEach((tabBtn) => {
+        tabBtn.addEventListener("click", () => {
 
-        const filter = tabBtn.getAttribute("data-filter");
-        cardsWithModals.forEach((cardWithModal) => {
-            if(filter === "all" || cardWithModal.classList.contains (filter)) {
-            cardWithModal.style.opacity = "1";
-            cardWithModal.classList.remove("hidden");
+            const filter = tabBtn.getAttribute("data-filter");
+            cardsWithModals.forEach((cardWithModal) => {
+                if (filter === "all" || cardWithModal.classList.contains(filter)) {
+                    cardWithModal.style.opacity = "1";
+                    cardWithModal.classList.remove("hidden");
 
-                setTimeout(() => {
-                                    cardWithModal.style.opacity = "1";
-                                    cardWithModal.style.transition = ".5s ease";
-                            }, 1);
+                    setTimeout(() => {
+                        cardWithModal.style.opacity = "1";
+                        cardWithModal.style.transition = ".5s ease";
+                    }, 1);
 
                 }
-            else{
-                cardWithModal.classList.add("hidden");
+                else {
+                    cardWithModal.classList.add("hidden");
 
-                setTimeout(() => {
-                                    cardWithModal.style.opacity = "0";
-                                    cardWithModal.style.transition = ".5s ease";
-                            }, 1);
+                    setTimeout(() => {
+                        cardWithModal.style.opacity = "0";
+                        cardWithModal.style.transition = ".5s ease";
+                    }, 1);
 
                 }
             });
@@ -108,32 +108,34 @@ portfolioTabBtns.forEach((tabBtn) => {
 // Open/Close Portfolio modals.
 const portfolioCardsWithModals = document.querySelectorAll(".portfolio-container .card-with-modal");
 portfolioCardsWithModals.forEach((portfolioCardWithModal) => {
-        const portfolioCard = portfolioCardWithModal.querySelector(".portfolio-card");
-        const portfolioBackdrop = portfolioCardWithModal.querySelector(".portfolio-modal-backdrop");
-        const portfolioModal = portfolioCardWithModal.querySelector(".portfolio-modal");
-        const modalCloseBtn = portfolioCardWithModal.querySelector(".modal-close-btn");
+    const portfolioCard = portfolioCardWithModal.querySelector(".portfolio-card");
+    const portfolioBackdrop = portfolioCardWithModal.querySelector(".portfolio-modal-backdrop");
+    const portfolioModal = portfolioCardWithModal.querySelector(".portfolio-modal");
+    const modalCloseBtn = portfolioCardWithModal.querySelector(".modal-close-btn");
 
-        portfolioCard.addEventListener("click", () => {
-                portfolioBackdrop.style.display = "flex";
+    portfolioCard.addEventListener("click", () => {
+        portfolioBackdrop.style.display = "flex";
 
-                setTimeout(() => {
-                    portfolioBackdrop.classList.add("active");
-                                }, 200);
-                setTimeout(() => {
-                    portfolioModal.classList.add("active");
-                                }, 200);
-                });
+        setTimeout(() => {
+            portfolioBackdrop.classList.add("active");
+        }, 200);
+        setTimeout(() => {
+            portfolioModal.classList.add("active");
+        }, 200);
+    });
 
 
-        modalCloseBtn.addEventListener("click", () => {
-                setTimeout(() => {portfolioBackdrop.style.display = "none";
-                            }, 500);
-                setTimeout(() => {portfolioBackdrop.classList.remove("active");
-                portfolioModal.classList.remove("active");
-                            }, 100);
-                    });
+    modalCloseBtn.addEventListener("click", () => {
+        setTimeout(() => {
+            portfolioBackdrop.style.display = "none";
+        }, 500);
+        setTimeout(() => {
+            portfolioBackdrop.classList.remove("active");
+            portfolioModal.classList.remove("active");
+        }, 100);
+    });
 
-            });
+});
 
 // testimonials swipper
 var swiper = new Swiper(".dr-client-swiper", {
@@ -148,57 +150,57 @@ var swiper = new Swiper(".dr-client-swiper", {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
     },
-    });
+});
 
 
 // Send the message from the email form
-(function() {
-            // https://dashboard.emailjs.com/admin/account
-            emailjs.init({
-            publicKey: "hFrNm3XDp2pxj6OtW",
-            });
-        })();
-    
-    
+(function () {
+    // https://dashboard.emailjs.com/admin/account
+    emailjs.init({
+        publicKey: "hFrNm3XDp2pxj6OtW",
+    });
+})();
+
+
 drContactForm = document.getElementById("dr-contact-form");
 drContactFormAlert = document.querySelector(".contact-form-alert");
-drContactForm.addEventListener('submit', function(event) {
-event.preventDefault();
-// these IDs from the previous steps
-emailjs.sendForm('service_f7fz87m', 'template_965xjpo', '#dr-contact-form').then(() => {
+drContactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    // these IDs from the previous steps
+    emailjs.sendForm('service_f7fz87m', 'template_965xjpo', '#dr-contact-form').then(() => {
         // console.log('SUCCESS!');
-drContactFormAlert.innerHTML = "<span>Your message sent successfully!</span><i class='ri-checkbox-circle-fill'></i>";
-drContactForm.reset();
-setTimeout(() => {
+        drContactFormAlert.innerHTML = "<span>Your message sent successfully!</span><i class='ri-checkbox-circle-fill'></i>";
+        drContactForm.reset();
+        setTimeout(() => {
             drContactFormAlert.innerHTML = "";
-            }, 3000);
-                        }, (error) => {
+        }, 3000);
+    }, (error) => {
         // console.log('FAILED...', error);
-drContactFormAlert.innerHTML = "<span>Message not sent!</span><i class='ri-error-warning-fill'></i>";
-drContactFormAlert.title = error;
-                        });
-                    });
+        drContactFormAlert.innerHTML = "<span>Message not sent!</span><i class='ri-error-warning-fill'></i>";
+        drContactFormAlert.title = error;
+    });
+});
 
 // Shrink the height of the header on scroll
 window.addEventListener("scroll", () => {
-const drHeader = document.querySelector(".dr-header");
-drHeader.classList.toggle("shrink", window.scrollY > 0);
+    const drHeader = document.querySelector(".dr-header");
+    drHeader.classList.toggle("shrink", window.scrollY > 0);
 });
 
 
 // Each bottom navigation menu items active on page scroll.
 window.addEventListener("scroll", () => {
-const navMenuSections = document.querySelectorAll(".nav-menu-section");
-const scrollY = window.pageYOffset;
+    const navMenuSections = document.querySelectorAll(".nav-menu-section");
+    const scrollY = window.pageYOffset;
 
-navMenuSections.forEach((navMenuSection) => {
-    let sectionHeight = navMenuSection.offsetHeight;
-    let sectionTop = navMenuSection.offsetTop - 50;
-    let id = navMenuSection.getAttribute("id");
-    if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-document.querySelector(".bottom-nav .menu li a[href*=" + id + "]").classList.add("current");
-}else{
-    document.querySelector(".bottom-nav .menu li a[href*=" + id + "]").classList.remove("current");
+    navMenuSections.forEach((navMenuSection) => {
+        let sectionHeight = navMenuSection.offsetHeight;
+        let sectionTop = navMenuSection.offsetTop - 50;
+        let id = navMenuSection.getAttribute("id");
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelector(".bottom-nav .menu li a[href*=" + id + "]").classList.add("current");
+        } else {
+            document.querySelector(".bottom-nav .menu li a[href*=" + id + "]").classList.remove("current");
         }
     });
 });
@@ -207,7 +209,7 @@ document.querySelector(".bottom-nav .menu li a[href*=" + id + "]").classList.add
 // Javascript to show bottom navigation menu on home (page Load).
 window.addEventListener("DOMContentLoaded", () => {
     const bottomNav = document.querySelector(".bottom-nav");
-bottomNav.classList.toggle("active", window.scrollY < 10);
+    bottomNav.classList.toggle("active", window.scrollY < 10);
 });
 
 
@@ -218,26 +220,26 @@ const menuHideBtn = document.querySelector(".menu-hide-btn");
 const menuShowBtn = document.querySelector(".menu-show-btn");
 var navTimeout;
 window.addEventListener("scroll", () => {
-        bottomNav.classList.add("active");
-        menuShowBtn.classList.remove("active");
-if(window.scrollY < 10) {
-    menuHideBtn.classList.remove("active");
+    bottomNav.classList.add("active");
+    menuShowBtn.classList.remove("active");
+    if (window.scrollY < 10) {
+        menuHideBtn.classList.remove("active");
 
-function scrollStopped(){
-bottomNav.classList.add("active");
-}
-clearTimeout(navTimeout);
-navTimeout = setTimeout(scrollStopped, 1500);
-}
+        function scrollStopped() {
+            bottomNav.classList.add("active");
+        }
+        clearTimeout(navTimeout);
+        navTimeout = setTimeout(scrollStopped, 1500);
+    }
 
 
-        if(window.scrollY > 10){
+    if (window.scrollY > 10) {
         menuHideBtn.classList.add("active");
 
-        function scrollStopped(){
-                bottomNav.classList.remove("active");
-                menuShowBtn.classList.add("active");
-                }
+        function scrollStopped() {
+            bottomNav.classList.remove("active");
+            menuShowBtn.classList.add("active");
+        }
         clearTimeout(navTimeout);
         navTimeout = setTimeout(scrollStopped, 1500);
     }
@@ -265,11 +267,11 @@ window.addEventListener("scroll", () => {
 
 
     // Scroll indicator bar
-const scrollIndicatorBar = document.querySelector(".scroll-indicator-bar");
-const pageScroll = document.body.scrollTop || document.documentElement.scrollTop;
-const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-const scrollValue = (pageScroll / height) * 100;
-scrollIndicatorBar.style.height = scrollValue + "%";
+    const scrollIndicatorBar = document.querySelector(".scroll-indicator-bar");
+    const pageScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollValue = (pageScroll / height) * 100;
+    scrollIndicatorBar.style.height = scrollValue + "%";
 
 });
 
@@ -311,86 +313,85 @@ scrollIndicatorBar.style.height = scrollValue + "%";
 
 // Test code for the custom cursor 
 (function () {
-        // Locate cursor element (support both .cursor-symbol and .cursor)
-        const cursor =
-          document.querySelector(".cursor-symbol") ||
-          document.querySelector(".cursor");
-        if (!cursor) return; // nothing to do
+    // Locate cursor element (support both .cursor-symbol and .cursor)
+    const cursor =
+        document.querySelector(".cursor-symbol") ||
+        document.querySelector(".cursor");
+    if (!cursor) return; // nothing to do
 
-        // Ensure cursor is appended to body (prevents isdrs if parent uses CSS transform)
-        if (cursor.parentElement !== document.body)
-          document.body.appendChild(cursor);
+    // Ensure cursor is appended to body (prevents isdrs if parent uses CSS transform)
+    if (cursor.parentElement !== document.body)
+        document.body.appendChild(cursor);
 
-        const cursorDot = cursor.querySelector(".cursor-dot");
-        const cursorCircle = cursor.querySelector(".cursor-circle");
-        if (!cursorDot || !cursorCircle) return;
+    const cursorDot = cursor.querySelector(".cursor-dot");
+    const cursorCircle = cursor.querySelector(".cursor-circle");
+    if (!cursorDot || !cursorCircle) return;
 
-        // Smooth follow variables
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let targetX = mouseX;
-        let targetY = mouseY;
+    // Smooth follow variables
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let targetX = mouseX;
+    let targetY = mouseY;
 
-        // Update target on pointer move (works for mouse + touch pen)
-        document.addEventListener(
-          "pointermove",
-          (e) => {
+    // Update target on pointer move (works for mouse + touch pen)
+    document.addEventListener(
+        "pointermove",
+        (e) => {
             targetX = e.clientX;
             targetY = e.clientY;
-          },
-          { passive: true }
-        );
+        },
+        { passive: true }
+    );
 
-        // Render loop (easing for smooth trailing)
-        function animate() {
-          // easing factor (0 < f < 1) — smaller = smoother/laggier
-          const f = 0.35;
-          mouseX += (targetX - mouseX) * f;
-          mouseY += (targetY - mouseY) * f;
+    // Render loop (easing for smooth trailing)
+    function animate() {
+        // easing factor (0 < f < 1) — smaller = smoother/laggier
+        const f = 0.35;
+        mouseX += (targetX - mouseX) * f;
+        mouseY += (targetY - mouseY) * f;
 
-          // apply transforms (translate3d for GPU acceleration)
-          const isLarge = cursorDot.classList.contains("large");
-          cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) ${
-            isLarge ? "scale(12)" : "scale(1)"
-          }`;
-          cursorCircle.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        // apply transforms (translate3d for GPU acceleration)
+        const isLarge = cursorDot.classList.contains("large");
+        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) ${isLarge ? "scale(12)" : "scale(1)"
+            }`;
+        cursorCircle.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
 
-          requestAnimationFrame(animate);
-        }
         requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
 
-        // Hover target selector (same as your original list)
-        const hoverSelector =
-          "body a, .theme-btn, .dr-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn";
+    // Hover target selector (same as your original list)
+    const hoverSelector =
+        "body a, .theme-btn, .dr-main-btn, .portfolio-card, .swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet, .service-card, .contact-social-links li, .contact-form .submit-btn, .menu-show-btn, .menu-hide-btn";
 
-        // Use event delegation so dynamic elements or newly-rendered sections are handled
-        document.addEventListener("pointerover", (e) => {
-          if (e.target.closest(hoverSelector)) {
+    // Use event delegation so dynamic elements or newly-rendered sections are handled
+    document.addEventListener("pointerover", (e) => {
+        if (e.target.closest(hoverSelector)) {
             cursorDot.classList.add("large");
             cursorCircle.style.display = "none";
-          }
-        });
+        }
+    });
 
-        document.addEventListener("pointerout", (e) => {
-          // only remove if the pointer didn't immediately land on another hover target
-          // (relatedTarget may be null in some cases)
-          const toEl = e.relatedTarget;
-          if (!toEl || !toEl.closest || !toEl.closest(hoverSelector)) {
+    document.addEventListener("pointerout", (e) => {
+        // only remove if the pointer didn't immediately land on another hover target
+        // (relatedTarget may be null in some cases)
+        const toEl = e.relatedTarget;
+        if (!toEl || !toEl.closest || !toEl.closest(hoverSelector)) {
             cursorDot.classList.remove("large");
             cursorCircle.style.display = "block";
-          }
-        });
+        }
+    });
 
-        // small polish: hide if pointer leaves the window
-        document.addEventListener("mouseleave", () => {
-          cursorDot.style.opacity = "0";
-          cursorCircle.style.opacity = "0";
-        });
-        document.addEventListener("mouseenter", () => {
-          cursorDot.style.opacity = "1";
-          cursorCircle.style.opacity = "0.6";
-        });
-      })();
+    // small polish: hide if pointer leaves the window
+    document.addEventListener("mouseleave", () => {
+        cursorDot.style.opacity = "0";
+        cursorCircle.style.opacity = "0";
+    });
+    document.addEventListener("mouseenter", () => {
+        cursorDot.style.opacity = "1";
+        cursorCircle.style.opacity = "0.6";
+    });
+})();
 
 
 // Change theme and save current theme on click the theme button.
@@ -401,18 +402,18 @@ themeBtn.addEventListener("click", () => {
 
 
     // Save theme icon and theme on click theme button.
-const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon";
-const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light": "dark";
-localStorage.setItem("dr-saved-icon", getCurrentIcon());
-localStorage.setItem("dr-saved-theme", getCurrentTheme());
+    const getCurrentIcon = () => themeBtn.classList.contains("active-sun-icon") ? "sun" : "moon";
+    const getCurrentTheme = () => document.body.classList.contains("light-theme") ? "light" : "dark";
+    localStorage.setItem("dr-saved-icon", getCurrentIcon());
+    localStorage.setItem("dr-saved-theme", getCurrentTheme());
 });
 
 // Get saved theme icon and theme on document Loaded.
 const savedIcon = localStorage.getItem("dr-saved-icon");
 const savedTheme = localStorage.getItem("dr-saved-theme");
 document.addEventListener("DOMContentLoaded", () => {
-    themeBtn.classList[savedIcon === "sun"? "add": "remove"]("active-sun-icon");
-    document.body.classList[savedTheme === "light" ? "add": "remove"]("light-theme");
+    themeBtn.classList[savedIcon === "sun" ? "add" : "remove"]("active-sun-icon");
+    document.body.classList[savedTheme === "light" ? "add" : "remove"]("light-theme");
 });
 
 // Scroll Reveal JS
@@ -460,11 +461,11 @@ function createBubble() {
 
     // Remove bubble after animation ends
     setTimeout(() => {
-    container.removeChild(bubble);
+        container.removeChild(bubble);
     }, duration * 1000);
 }
 
-  // Generate a new bubble every 300ms
+// Generate a new bubble every 300ms
 setInterval(createBubble, 300);
 
 
@@ -478,34 +479,34 @@ const muteBtn = document.getElementById('mute-btn');
 let userInteracted = false;
 
 function tryPlayAudio() {
-if (!userInteracted) {
-    userInteracted = true;
+    if (!userInteracted) {
+        userInteracted = true;
 
-    // Set volume initially low
-    audio.volume = 0.05;
-    audio.muted = false;
+        // Set volume initially low
+        audio.volume = 0.05;
+        audio.muted = false;
 
-    // Attempt to play
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-    playPromise
-        .then(() => {
-          // Gradually raise volume
-        const targetVolume = 0.30;
-        const step = 0.02;
-        const interval = setInterval(() => {
-            if (audio.volume < targetVolume && !audio.muted) {
-            audio.volume = Math.min(audio.volume + step, targetVolume);
-            } else {
-            clearInterval(interval);
-            }
-        }, 200);
-        })
-        .catch(error => {
-        console.log("Playback blocked:", error);
-        });
+        // Attempt to play
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    // Gradually raise volume
+                    const targetVolume = 0.30;
+                    const step = 0.02;
+                    const interval = setInterval(() => {
+                        if (audio.volume < targetVolume && !audio.muted) {
+                            audio.volume = Math.min(audio.volume + step, targetVolume);
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 200);
+                })
+                .catch(error => {
+                    console.log("Playback blocked:", error);
+                });
+        }
     }
-}
 }
 
 // Detect first real interaction
@@ -514,17 +515,17 @@ document.addEventListener("keydown", tryPlayAudio, { once: true });
 document.addEventListener("scroll", tryPlayAudio, { once: true });
 
 muteBtn.addEventListener("click", () => {
-audio.muted = !audio.muted;
+    audio.muted = !audio.muted;
 
-const icon = muteBtn.querySelector("i");
+    const icon = muteBtn.querySelector("i");
 
-if (audio.muted) {
-    icon.classList.remove("ri-volume-up-fill");
-    icon.classList.add("ri-volume-mute-fill");
-} else {
-    icon.classList.remove("ri-volume-mute-fill");
-    icon.classList.add("ri-volume-up-fill");
-}
+    if (audio.muted) {
+        icon.classList.remove("ri-volume-up-fill");
+        icon.classList.add("ri-volume-mute-fill");
+    } else {
+        icon.classList.remove("ri-volume-mute-fill");
+        icon.classList.add("ri-volume-up-fill");
+    }
 });
 
 // Progress bar
@@ -545,7 +546,7 @@ window.addEventListener('scroll', () => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// This has to be implemented later. The main target of this idea is to change the picture while I change the theme color. 
+// This has to be implemented later. The main target of this idea is to change the picture while I change the theme color.
 
 // Portfolio image changing logic while changing the theme.
 // const themeButton = document.querySelector(".theme-btn");
