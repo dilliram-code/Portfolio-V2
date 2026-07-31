@@ -471,21 +471,6 @@ setInterval(createBubble, 300);
 const audio = document.getElementById('bg-music');
 const muteBtn = document.getElementById('mute-btn');
 
-// Belt-and-suspenders: some browsers still want an explicit play()
-// call even on a muted+autoplay element, especially if it's called
-// before the page has fully settled. This is silent either way since
-// the element is muted at this point.
-if (audio.paused) {
-    audio.play().catch((error) => console.log("Muted autoplay blocked:", error));
-}
-
-// If the audio file itself fails to load (wrong path, missing file,
-// unsupported format), no amount of JS will make it play — this just
-// surfaces that clearly in the console instead of failing silently.
-audio.addEventListener("error", () => {
-    console.warn("bg-music failed to load — check that assets/audio/music.mp3 exists at that path.");
-});
-
 let revealed = false;
 
 function revealAudio() {
@@ -579,12 +564,11 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 
 // ==================== Ambient Particle Field ====================
-// On first load, tiny white dots burst outward from the center in
-// every direction, far enough that some reach the top of the page,
-// along gently curving paths. After a brief weightless pause, they
-// fall slowly and gently, like snow, and settle permanently near the
-// bottom of the screen — a one-time animation, not a perpetual loop.
-// Pure canvas + rAF, no dependencies.
+// On first load, tiny dots burst outward from the center along gently
+// curving paths (not straight rays), hover for a moment, then gravity
+// takes over and pulls them down into a soft glowing nebula cluster
+// at the bottom of the screen — which lines up with the footer once
+// the page is scrolled that far. Pure canvas + rAF, no dependencies.
 (function () {
     const canvas = document.getElementById("particle-field");
     if (!canvas || !canvas.getContext) return;
@@ -615,11 +599,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
     window.addEventListener("resize", sizeCanvas);
 
     const particleCount = 140;
-    // Much less friction than before, so the burst actually travels
-    // far enough (a few hundred px) to reach the top of the page in
-    // most directions, instead of stalling out near the center.
-    const burstFriction = 0.988;
-    const gravity = 0.01; // very gentle ramp-up into the fall speed
+    const burstFriction = 0.965; // slows the initial radiating burst down quickly
+    const gravity = 0.05; // px/frame^2 once a particle starts falling
+    const terminalFallSpeed = 3.2; // px/frame cap so the fall stays gentle
     const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -627,25 +609,40 @@ document.getElementById("year").textContent = new Date().getFullYear();
             x: width / 2,
             y: height / 2,
             angle: Math.random() * Math.PI * 2, // direction of travel, wobbles during the burst
-            speed: 3 + Math.random() * 8,
+            speed: 1.6 + Math.random() * 5,
             radius: 1 + Math.random() * 2,
             baseAlpha: 0.35 + Math.random() * 0.55,
             twinkleSpeed: 0.4 + Math.random() * 0.8,
             twinklePhase: Math.random() * Math.PI * 2,
-            phase: "burst", // burst -> hover -> fall (fall loops forever, like snow)
+            phase: "burst", // burst -> hover -> fall -> settled
             hoverUntil: 0,
             fallSpeed: 0,
-            // Each flake has its own gentle top speed, like real snow —
-            // small variation keeps the fall from looking mechanical.
-            terminalFallSpeed: 0.35 + Math.random() * 0.55,
+            settleY: 0,
             swayPhase: Math.random() * Math.PI * 2,
             swaySpeed: 0.5 + Math.random() * 1,
-            swayAmplitude: 0.4 + Math.random() * 1,
+            swayAmplitude: 0.3 + Math.random() * 0.6,
         });
     }
 
+    let settledCount = 0;
+
     function tick(t) {
         ctx.clearRect(0, 0, width, height);
+
+        // Soft blue-violet haze behind the settled cluster, growing as
+        // more dots land — this is what turns "a pile of dots" into a
+        // nebula. Cheap: one full-canvas gradient fill per frame.
+        const glowStrength = Math.min(settledCount / particleCount, 1);
+        if (glowStrength > 0.02) {
+            const grad = ctx.createRadialGradient(
+                width / 2, height, 10,
+                width / 2, height, Math.max(width, 400) * 0.7
+            );
+            grad.addColorStop(0, `rgba(140, 165, 255, ${(glowStrength * 0.4).toFixed(3)})`);
+            grad.addColorStop(1, "rgba(140, 165, 255, 0)");
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, width, height);
+        }
 
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
@@ -654,14 +651,14 @@ document.getElementById("year").textContent = new Date().getFullYear();
                 // Wobble the direction a little every frame instead of
                 // holding it fixed — that's what turns a straight ray
                 // into a gently curving path.
-                p.angle += (Math.random() - 0.5) * 0.1;
+                p.angle += (Math.random() - 0.5) * 0.14;
                 p.speed *= burstFriction;
                 p.x += Math.cos(p.angle) * p.speed;
                 p.y += Math.sin(p.angle) * p.speed;
 
-                if (p.speed < 0.35) {
+                if (p.speed < 0.4) {
                     p.phase = "hover";
-                    p.hoverUntil = t + 400 + Math.random() * 1200;
+                    p.hoverUntil = t + 400 + Math.random() * 1000;
                 }
             } else if (p.phase === "hover") {
                 // A brief weightless pause before gravity takes over.
@@ -671,24 +668,23 @@ document.getElementById("year").textContent = new Date().getFullYear();
                 if (t > p.hoverUntil) {
                     p.phase = "fall";
                     p.fallSpeed = 0;
-                    // Uneven landing line near the bottom so the flakes
-                    // settle like a snow drift, not a perfectly flat row.
-                    p.settleY = height - (4 + Math.random() * 46);
+                    // Uneven landing line near the bottom so the cluster
+                    // reads as an organic cloud, not a flat shelf.
+                    p.settleY = height - (15 + Math.random() * 90);
                 }
             } else if (p.phase === "fall") {
-                // Falls gently until it reaches its own landing line,
-                // then stops for good — no respawning at the top.
-                p.fallSpeed = Math.min(p.fallSpeed + gravity, p.terminalFallSpeed);
-                p.x += Math.sin(t * 0.0015 * p.swaySpeed + p.swayPhase) * p.swayAmplitude;
+                p.fallSpeed = Math.min(p.fallSpeed + gravity, terminalFallSpeed);
+                p.x += Math.sin(t * 0.002 * p.swaySpeed + p.swayPhase) * p.swayAmplitude;
                 p.y += p.fallSpeed;
 
                 if (p.y >= p.settleY) {
                     p.y = p.settleY;
                     p.phase = "settled";
+                    settledCount++;
                 }
             } else {
-                // Settled: done falling, just a faint organic sway so
-                // it doesn't look completely frozen in place.
+                // Settled: just a faint organic sway so the nebula still
+                // feels alive instead of frozen in place.
                 p.x += Math.sin(t * 0.0009 * p.swaySpeed + p.swayPhase) * 0.15;
             }
 
@@ -701,10 +697,18 @@ document.getElementById("year").textContent = new Date().getFullYear();
             const alpha = p.baseAlpha * twinkle;
 
             ctx.beginPath();
-            ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
+            if (p.phase === "settled") {
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = "rgba(150, 180, 255, 0.9)";
+                ctx.fillStyle = `rgba(195, 210, 255, ${alpha.toFixed(3)})`;
+            } else {
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
+            }
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
             ctx.fill();
         }
+        ctx.shadowBlur = 0;
 
         requestAnimationFrame(tick);
     }

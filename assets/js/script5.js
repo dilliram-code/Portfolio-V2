@@ -582,9 +582,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // On first load, tiny white dots burst outward from the center in
 // every direction, far enough that some reach the top of the page,
 // along gently curving paths. After a brief weightless pause, they
-// fall slowly and gently, like snow, and settle permanently near the
-// bottom of the screen — a one-time animation, not a perpetual loop.
-// Pure canvas + rAF, no dependencies.
+// settle into a slow, gentle, perpetual snowfall — looping back to
+// the top once they drift past the bottom, instead of piling up
+// anywhere. Pure canvas + rAF, no dependencies.
 (function () {
     const canvas = document.getElementById("particle-field");
     if (!canvas || !canvas.getContext) return;
@@ -671,25 +671,19 @@ document.getElementById("year").textContent = new Date().getFullYear();
                 if (t > p.hoverUntil) {
                     p.phase = "fall";
                     p.fallSpeed = 0;
-                    // Uneven landing line near the bottom so the flakes
-                    // settle like a snow drift, not a perfectly flat row.
-                    p.settleY = height - (4 + Math.random() * 46);
                 }
-            } else if (p.phase === "fall") {
-                // Falls gently until it reaches its own landing line,
-                // then stops for good — no respawning at the top.
+            } else {
+                // Falling forever, gently, like snow — once a flake
+                // drifts past the bottom it just reappears at the top,
+                // so the flurry never runs out or piles up anywhere.
                 p.fallSpeed = Math.min(p.fallSpeed + gravity, p.terminalFallSpeed);
                 p.x += Math.sin(t * 0.0015 * p.swaySpeed + p.swayPhase) * p.swayAmplitude;
                 p.y += p.fallSpeed;
 
-                if (p.y >= p.settleY) {
-                    p.y = p.settleY;
-                    p.phase = "settled";
+                if (p.y > height + 20) {
+                    p.y = -20;
+                    p.x = Math.random() * width;
                 }
-            } else {
-                // Settled: done falling, just a faint organic sway so
-                // it doesn't look completely frozen in place.
-                p.x += Math.sin(t * 0.0009 * p.swaySpeed + p.swayPhase) * 0.15;
             }
 
             // Wrap horizontally in every phase so curls/sway never carry

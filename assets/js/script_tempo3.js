@@ -460,72 +460,49 @@ setInterval(createBubble, 300);
 
 
 // Music player
-// Browsers only allow audio to autoplay *unmuted* after some user
-// gesture — there's no way around that from JS, it's a browser-level
-// policy. So the <audio> tag starts muted+autoplay (always allowed,
-// guaranteed to be already playing silently from page load), and this
-// unmutes it the instant it detects almost any interaction — moving
-// the mouse, touching the screen, scrolling, a key press, or a click —
-// so it feels as close to "automatic" as the platform permits. After
-// that, the speaker button is the only thing that mutes it again.
 const audio = document.getElementById('bg-music');
 const muteBtn = document.getElementById('mute-btn');
 
-// Belt-and-suspenders: some browsers still want an explicit play()
-// call even on a muted+autoplay element, especially if it's called
-// before the page has fully settled. This is silent either way since
-// the element is muted at this point.
-if (audio.paused) {
-    audio.play().catch((error) => console.log("Muted autoplay blocked:", error));
-}
+let userInteracted = false;
 
-// If the audio file itself fails to load (wrong path, missing file,
-// unsupported format), no amount of JS will make it play — this just
-// surfaces that clearly in the console instead of failing silently.
-audio.addEventListener("error", () => {
-    console.warn("bg-music failed to load — check that assets/audio/music.mp3 exists at that path.");
-});
+function tryPlayAudio() {
+    if (!userInteracted) {
+        userInteracted = true;
 
-let revealed = false;
+        // Set volume initially low
+        audio.volume = 0.05;
+        audio.muted = false;
 
-function revealAudio() {
-    if (revealed) return;
-    revealed = true;
-
-    audio.muted = false;
-    audio.volume = 0.05;
-
-    if (audio.paused) {
-        audio.play().catch((error) => console.log("Playback blocked:", error));
+        // Attempt to play
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    // Gradually raise volume
+                    const targetVolume = 0.30;
+                    const step = 0.02;
+                    const interval = setInterval(() => {
+                        if (audio.volume < targetVolume && !audio.muted) {
+                            audio.volume = Math.min(audio.volume + step, targetVolume);
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 200);
+                })
+                .catch(error => {
+                    console.log("Playback blocked:", error);
+                });
+        }
     }
-
-    // Gradually raise the volume instead of jumping straight to full.
-    const targetVolume = 0.30;
-    const step = 0.02;
-    const interval = setInterval(() => {
-        if (audio.muted) {
-            clearInterval(interval);
-            return;
-        }
-        if (audio.volume < targetVolume) {
-            audio.volume = Math.min(audio.volume + step, targetVolume);
-        } else {
-            clearInterval(interval);
-        }
-    }, 200);
 }
 
-["pointerdown", "mousemove", "touchstart", "keydown", "scroll"].forEach((evt) => {
-    document.addEventListener(evt, revealAudio, { once: true, passive: true });
-});
+// Detect first real interaction
+document.addEventListener("click", tryPlayAudio, { once: true });
+document.addEventListener("keydown", tryPlayAudio, { once: true });
+document.addEventListener("scroll", tryPlayAudio, { once: true });
 
 muteBtn.addEventListener("click", () => {
-    revealed = true; // clicking the button is itself the reveal
     audio.muted = !audio.muted;
-
-    if (!audio.muted && audio.paused) {
-        audio.play().catch((error) => console.log("Playback blocked:", error));
-    }
 
     const icon = muteBtn.querySelector("i");
 
@@ -579,11 +556,10 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 
 // ==================== Ambient Particle Field ====================
-// On first load, tiny white dots burst outward from the center in
-// every direction, far enough that some reach the top of the page,
-// along gently curving paths. After a brief weightless pause, they
-// fall slowly and gently, like snow, and settle permanently near the
-// bottom of the screen — a one-time animation, not a perpetual loop.
+// On first load, tiny dots burst outward from the center, decelerate
+// under friction, and settle into a slow permanent drift — like dust
+// motes / a faint starfield — that keeps going for as long as the
+// page is open. Particles wrap around screen edges instead of dying.
 // Pure canvas + rAF, no dependencies.
 (function () {
     const canvas = document.getElementById("particle-field");
@@ -615,32 +591,22 @@ document.getElementById("year").textContent = new Date().getFullYear();
     window.addEventListener("resize", sizeCanvas);
 
     const particleCount = 140;
-    // Much less friction than before, so the burst actually travels
-    // far enough (a few hundred px) to reach the top of the page in
-    // most directions, instead of stalling out near the center.
-    const burstFriction = 0.988;
-    const gravity = 0.01; // very gentle ramp-up into the fall speed
+    const friction = 0.965; // slows the initial burst down quickly
+    const ambientJitter = 0.02; // tiny constant nudge that keeps them softly drifting forever
     const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 1.6 + Math.random() * 5; // px per frame, before friction
         particles.push({
             x: width / 2,
             y: height / 2,
-            angle: Math.random() * Math.PI * 2, // direction of travel, wobbles during the burst
-            speed: 3 + Math.random() * 8,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
             radius: 1 + Math.random() * 2,
             baseAlpha: 0.35 + Math.random() * 0.55,
             twinkleSpeed: 0.4 + Math.random() * 0.8,
             twinklePhase: Math.random() * Math.PI * 2,
-            phase: "burst", // burst -> hover -> fall (fall loops forever, like snow)
-            hoverUntil: 0,
-            fallSpeed: 0,
-            // Each flake has its own gentle top speed, like real snow —
-            // small variation keeps the fall from looking mechanical.
-            terminalFallSpeed: 0.35 + Math.random() * 0.55,
-            swayPhase: Math.random() * Math.PI * 2,
-            swaySpeed: 0.5 + Math.random() * 1,
-            swayAmplitude: 0.4 + Math.random() * 1,
         });
     }
 
@@ -650,52 +616,20 @@ document.getElementById("year").textContent = new Date().getFullYear();
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
 
-            if (p.phase === "burst") {
-                // Wobble the direction a little every frame instead of
-                // holding it fixed — that's what turns a straight ray
-                // into a gently curving path.
-                p.angle += (Math.random() - 0.5) * 0.1;
-                p.speed *= burstFriction;
-                p.x += Math.cos(p.angle) * p.speed;
-                p.y += Math.sin(p.angle) * p.speed;
+            // Friction pulls the initial burst speed down toward zero;
+            // the small random jitter keeps replacing it so particles
+            // never fully stop — they end up gently wandering forever.
+            p.vx = p.vx * friction + (Math.random() - 0.5) * ambientJitter;
+            p.vy = p.vy * friction + (Math.random() - 0.5) * ambientJitter;
+            p.x += p.vx;
+            p.y += p.vy;
 
-                if (p.speed < 0.35) {
-                    p.phase = "hover";
-                    p.hoverUntil = t + 400 + Math.random() * 1200;
-                }
-            } else if (p.phase === "hover") {
-                // A brief weightless pause before gravity takes over.
-                p.x += (Math.random() - 0.5) * 0.4;
-                p.y += (Math.random() - 0.5) * 0.4;
-
-                if (t > p.hoverUntil) {
-                    p.phase = "fall";
-                    p.fallSpeed = 0;
-                    // Uneven landing line near the bottom so the flakes
-                    // settle like a snow drift, not a perfectly flat row.
-                    p.settleY = height - (4 + Math.random() * 46);
-                }
-            } else if (p.phase === "fall") {
-                // Falls gently until it reaches its own landing line,
-                // then stops for good — no respawning at the top.
-                p.fallSpeed = Math.min(p.fallSpeed + gravity, p.terminalFallSpeed);
-                p.x += Math.sin(t * 0.0015 * p.swaySpeed + p.swayPhase) * p.swayAmplitude;
-                p.y += p.fallSpeed;
-
-                if (p.y >= p.settleY) {
-                    p.y = p.settleY;
-                    p.phase = "settled";
-                }
-            } else {
-                // Settled: done falling, just a faint organic sway so
-                // it doesn't look completely frozen in place.
-                p.x += Math.sin(t * 0.0009 * p.swaySpeed + p.swayPhase) * 0.15;
-            }
-
-            // Wrap horizontally in every phase so curls/sway never carry
-            // a particle permanently off-screen.
+            // Wrap around edges instead of disappearing, so the field
+            // stays evenly populated indefinitely.
             if (p.x < -20) p.x = width + 20;
             if (p.x > width + 20) p.x = -20;
+            if (p.y < -20) p.y = height + 20;
+            if (p.y > height + 20) p.y = -20;
 
             const twinkle = 0.55 + 0.45 * Math.sin(t * 0.001 * p.twinkleSpeed + p.twinklePhase);
             const alpha = p.baseAlpha * twinkle;

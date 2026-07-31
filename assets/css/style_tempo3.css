@@ -365,18 +365,16 @@ body {
   .bg-aurora span,
   .float-slow,
   .float-slow-delayed,
-  .float-slow-centered,
   .float-fast {
     animation: none;
   }
 }
 
 /* ================== Ambient particle field ==================
-   Tiny dots burst outward from the center in gently curving paths on
-   first load, hover briefly, then fall and gather into a soft glowing
-   nebula at the bottom of the screen. Sits in the same ambient layer
-   as the aurora and the bubbles — fixed, non-interactive, never
-   affects layout. */
+   Tiny dots burst outward from the center on first load, then settle
+   into a slow, permanent floating starfield behind the page content.
+   Sits in the same ambient layer as the aurora and the bubbles —
+   fixed, non-interactive, never affects layout. */
 .particle-field {
   position: fixed;
   inset: 0;
@@ -420,26 +418,6 @@ body {
 .float-fast {
   display: inline-block;
   animation: gentle-float 3.2s ease-in-out infinite;
-}
-
-/* For elements that rely on transform: translateX(-50%) to stay
-   centered (like .floating-quote) — a plain .float-slow animation
-   would overwrite that transform each frame and knock it off-center,
-   so this variant keeps the centering baked into every keyframe. */
-@keyframes gentle-float-centered {
-
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  50% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-}
-
-.float-slow-centered {
-  animation: gentle-float-centered 4.5s ease-in-out infinite;
 }
 
 /* ====================== Reusable Styles ==================== */
